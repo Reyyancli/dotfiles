@@ -1,0 +1,77 @@
+# Stops a new line from being appended
+add_newline = false
+
+# Minimum time for a command to respond
+command_timeout = 60_000
+
+# What apperes on the right of the terminal
+right_format = "$python $cmd_duration $git_branch"
+
+
+# All spaces at the beginning of each option is not needed
+# Its just to look better
+
+
+# Single line command prompt
+[line_break]
+ disabled = false
+
+# battery symbol here
+[battery]
+ disabled = true
+
+# This shows how long it took for a command to complete
+[cmd_duration]
+ style = "bg:#22282f fg:#dcdde1"
+ show_milliseconds = true
+ min_time = 1_000
+ format = "[[](fg:#22282f)$duration[](fg:#22282f)]($style)"
+
+# This is probably the arrow up front
+[character]
+ success_symbol = "➤ "
+ error_symbol = "[➤ ](fg:#a54242)"
+ format = " $symbol"
+
+# This shows where youre at
+[directory]
+
+ style = "bg:#f77b5c fg:#442219"
+ read_only = " 🔑"
+ format = "[[$read_only ](fg:#442219 bg:#f77b5c)$path[](fg:#f77b5c)]($style)"
+
+# This is unicode for the directories
+[directory.substitutions]
+
+ "~/Documents" = "📄"
+ "~/Music" = "🎵 "
+ "~/Movies" = "🍿 "
+ "~/Pictures" = "🖼 "
+ "~/Sources" = "⚒️ "
+ "~/Downloads" = "⤓ "
+ "~" = "🏠 "
+ "/" = " "
+
+# Your users name
+[username]
+
+ show_always = true
+ style_user = "bg:#f2a686 fg:#442219"
+ format = "[ あ $user[](fg:#f2a686 bg:#e57255)]($style)"
+
+# If youre in a git branch this shows it
+[git_branch]
+
+ symbol = ""
+ style = "bg:#8abeb7 fg:#373b41"
+ format = " [[](fg:#8abeb7)$symbol$branch[](fg:#8abeb7)]($style)"
+
+# Python here
+
+[python]
+symbol = "🐍 "
+style = "bg:#476975 fg:#373b41"
+
+pyenv_prefix = "pyenv "
+python_binary = "python3"
+format = '[[](fg:#476975)$symbol$pyenv_prefix$version(\($virtualenv\))[](fg:#476975)]($style)'

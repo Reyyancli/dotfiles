@@ -1,0 +1,110 @@
+#!/bin/bash
+
+x=$(echo -e "Orange\nBlue\nGreen\nYellow\nCream\nPurwhite\nWhilue\nPink\nWhite\nWhiteInverted [bugged]\n[Fix color scheme]" | dmenu -i -p "Select theme")
+
+# Searched the values in polybar config
+# This searches the polybar config file for the values because i dont feel like figuring out how to do it with the i3 config
+
+polybar=~/.config/polybar/config.ini
+secondary=$(cat $polybar | grep -E 'primary =' | sed -n 's/primary = #//p')
+primary=$(cat $polybar | grep -m 1 -E 'foreground =' | sed -n 's/foreground = #//p')
+background=$(cat $polybar | grep -m 1 -E 'background =' | sed -n 's/background = #//p')
+bgalt=$(cat $polybar | grep -m 1 -E 'background-alt =' | sed -n 's/background-alt = #//p')
+
+echo primary: $primary
+echo secondary: $secondary
+echo background: $background
+echo bgalt: $bgalt
+
+# Colors
+
+# primary is the darker color (eg. OrangeP, BlueP indicated OrangePrimary, BluePrimary)
+# secondary is the lighter color (eg. OrangeS indicating OrangeSecondary)
+# background is the background color in polybar
+# OrangeB doesnt really serve any purpose (i dont even know why its here)
+
+OrangeP=E57255
+OrangeS=F2A686
+OrangeB=F77B5C
+BlueP=7DABEF
+BlueS=C2EEFD
+GreenP=4ACB66
+GreenS=E0FDAD
+YellowP=EACD4C
+YellowS=F9F5BB
+CreamP=7B79A2
+CreamS=FCEFE3
+PinkP=E359B0
+PinkS=F2ACE7
+PurwhiteP=AC4ADD
+PurwhiteS=EFD9F6
+WhilueP=4B96DC
+WhilueS=BDE2E8
+WhiteP=D4D4D4
+WhiteS=FFFFFF
+BlackP=161616
+BlackS=424242
+LightBG=F5F5F5
+DarkBG=131426
+LightBGalt=E5E5E5
+DarkBGalt=242B3D
+
+# The code
+
+if [ "$x" == "Orange" ]; then
+	sed -i -e "s/$primary/$OrangeP/Ig" -e "s/$secondary/$OrangeS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Blue" ]; then 
+	sed -i -e "s/$primary/$BlueP/Ig" -e "s/$secondary/$BlueS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Green" ]; then
+	sed -i -e "s/$primary/$GreenP/Ig" -e "s/$secondary/$GreenS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Yellow" ]; then 
+	sed -i -e "s/$primary/$YellowP/Ig" -e "s/$secondary/$YellowS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Cream" ]; then 
+	sed -i -e "s/$primary/$CreamP/Ig" -e "s/$secondary/$CreamS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Pink" ]; then 
+	sed -i -e "s/$primary/$PinkP/Ig" -e "s/$secondary/$PinkS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Purwhite" ]; then 
+	sed -i -e "s/$primary/$PurwhiteP/Ig" -e "s/$secondary/$PurwhiteS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Whilue" ]; then 
+	sed -i -e "s/$primary/$WhilueP/Ig" -e "s/$secondary/$WhilueS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "White" ]; then 
+	sed -i -e "s/$primary/$WhiteP/Ig" -e "s/$secondary/$WhiteS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "WhiteInverted [bugged]" ]; then 
+	sed -i -e "s/$primary/$BlackP/Ig" -e "s/$secondary/$BlackS/Ig" -e "s/$background/$LightBG/Ig" -e "s/$bgalt/$LightBGalt/Ig" $HOME/.config/polybar/config.ini
+	sed -i -e "s/$primary/$WhiteP/Ig" -e "s/$secondary/$WhiteS/Ig" $HOME/.config/i3/config $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "[Fix color scheme]" ]; then
+	cd back; ./fix
+	i3-msg restart
+	killall polybar
+	polybar &
+fi

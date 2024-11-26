@@ -1,0 +1,79 @@
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal and vertical orientation
+bindsym $mod+h split h
+
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Selecting container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# Reloading and restarting i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Resizing keybinds
+bindsym Ctrl+$mod+j resize grow width 20px
+bindsym Ctrl+$mod+semicolon resize shrink width 20px
+bindsym Ctrl+$mod+l resize grow height 20px
+bindsym Ctrl+$mod+k resize shrink height 20px 
+
+bindsym Ctrl+$mod+Left resize grow width 20px
+bindsym Ctrl+$mod+Right resize shrink width 20px
+bindsym Ctrl+$mod+Down resize grow height 20px
+bindsym Ctrl+$mod+Up resize shrink height 20px 
+
+bindsym Ctrl+$mod+i resize shrink height 20px; resize shrink width 20px
+bindsym Ctrl+$mod+o resize grow height 20px; resize grow width 20px
+
+# Gaps
+gaps inner 10
+gaps outer 5
+
+bindsym $Mod+i gaps outer current plus 5
+bindsym $Mod+o gaps outer current minus 5
+
+bindsym $Mod+Shift+i gaps inner current plus 5
+bindsym $Mod+Shift+o gaps inner current minus 5
+
+# Next and Previous workspaces
+bindsym $mod+Mod1+j workspace prev
+bindsym $mod+Mod1+semicolon workspace next
+
+# Alt tab?
+bindsym Mod1+Tab workspace back_and_forth
+bindsym $mod+Tab exec rofi -show window
+

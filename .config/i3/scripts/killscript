@@ -1,0 +1,5 @@
+#!/bin/bash
+
+x=$(xdotool getactivewindow getwindowpid)
+
+kill -9 $x

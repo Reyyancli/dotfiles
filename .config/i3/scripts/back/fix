@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yes | cp config.ini $HOME/.config/polybar/config.ini
+yes | cp starship.toml2 $HOME/.config/starship.toml
+yes | cp config $HOME/.config/i3/config
