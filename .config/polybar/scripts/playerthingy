@@ -1,0 +1,14 @@
+#!/bin/bash
+
+playername=$(playerctl --list-all 2>&1 | sed -n '1p')
+playerstatus=$(playerctl status 2>&1)
+
+if [[ $playername == "No players found" ]]; then
+	echo ""
+else
+	if [[ $playerstatus == "Playing" ]]; then
+		echo "$playername"
+	else
+		echo "$playername ▶"
+	fi
+fi

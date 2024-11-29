@@ -1,8 +1,8 @@
 # Swap containers
-bindsym $mod+p mark --add "swapee"; mode "swapper"; exec notify-send -a "i3 message" -u low "Entered Swap"
+bindsym $mod+p mark --add "swapee"; mode "swapper"; exec notify-send -a "System Message" -u low "Entered Swap Mode"
 mode "swapper" {
-	bindsym $mod+p swap container with mark "swapee"; unmark "swapee"; mode "default"; exec notify-send -a "i3 message" -u low "Swapped!"
-	bindsym Escape mode "default"; exec notify-send -a "i3 message" -u low "Exited Swap" 
+	bindsym $mod+p swap container with mark "swapee"; unmark "swapee"; mode "default"; exec notify-send -a "i3 message" -u low "Finished Swap"
+	bindsym Escape mode "default"; exec notify-send -a "i3 message" -u low "Exiting Swap Mode" 
 
 	set $fm HDMI-0
 	set $sm HDMI-1-2
