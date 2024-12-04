@@ -2,6 +2,7 @@ include ~/.config/i3/workspaces
 include ~/.config/i3/unused
 include ~/.config/i3/commands
 include ~/.config/i3/swap
+#include ~/.config/i3/kdei3config
 include ~/.config/i3/mystuff
 focus_follows_mouse no
 
@@ -25,7 +26,6 @@ for_window [class="explorer.exe"] floating enable
 for_window [class="copyq"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Notepadqq"] floating enable
-for_window [class="plasma.emojier"] floating enable
 for_window [class="OpenTabletDriver.UX"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Blueman-manager"] floating enable
@@ -47,7 +47,8 @@ bindsym Print exec --no-startup-id flameshot gui
 for_window [class="spectacle"] floating enable
 bindsym Shift+Print exec spectacle
 
-# Font
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
 font pango:monospace 0
 
 # Polybar
@@ -62,8 +63,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 exec_always --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 70%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
 #bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym $mod+XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
@@ -96,7 +97,8 @@ bindsym $mod+q kill
 # Launches apps
 bindsym $mod+comma exec nitrogen --head=2
 bindsym $mod+Mod1+comma exec nitrogen --head=1
-bindsym $mod+period exec plasma-emojier
+bindsym $mod+period exec gnome-characters
+
 
 # Border
 default_border pixel 4
@@ -115,17 +117,16 @@ bindsym $mod+Shift+minus scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#7B79A2	#7B79A2		#FCEFE3	#FCEFE3		#7B79A2
+client.focused	#7DABEF	#7DABEF		#ffffff	#C2EEFD		#7DABEF
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
 
 # Lock
-bindsym $mod+Mod1+l exec i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color 7B79A2 -k --keyhl-color=FCEFE3 --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FCEFE3 --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FCEFE3 --greeter-pos="920:460" --ringver-color=FCEFE3 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FCEFE3
+bindsym $mod+Mod1+l exec i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color EACD4C -k --keyhl-color=F9F5BB --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FFFFFF --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FFFFFF --greeter-pos="920:460" --ringver-color=F9F5BB -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FFFFFF
 
 # Bind for making floating window sticky
 bindsym $mod+equal sticky toggle
 
 # Script for changing color scheme
 bindsym $mod+Ctrl+comma exec $HOME/.config/i3/scripts/theme
-
