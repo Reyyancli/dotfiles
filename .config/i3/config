@@ -9,7 +9,7 @@ focus_follows_mouse no
 # Things to always execute
 exec_always --no-startup-id xset r rate 300 50
 exec_always --no-startup-id dunst
-exec_always export XDG_MENU_PREFIX=plasma- && kbuildsycoca6
+exec_always export XDG_MENU_PREFIX=arch- && kbuildsycoca6 --noincremental
 exec_always --no-startup-id copyq
 exec_always nitrogen --restore
 exec_always playerctld daemon
