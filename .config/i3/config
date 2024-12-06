@@ -117,13 +117,13 @@ bindsym $mod+Shift+minus scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#7DABEF	#7DABEF		#ffffff	#C2EEFD		#7DABEF
+client.focused	#E57255	#E57255		#ffffff	#F2A686		#E57255
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
 
 # Lock
-bindsym $mod+Mod1+l exec i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color EACD4C -k --keyhl-color=F9F5BB --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FFFFFF --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FFFFFF --greeter-pos="920:460" --ringver-color=F9F5BB -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FFFFFF
+bindsym $mod+Mod1+l exec i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color E57255 -k --keyhl-color=F2A686 --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FFFFFF --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FFFFFF --greeter-pos="920:460" --ringver-color=F2A686 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FFFFFF
 
 # Bind for making floating window sticky
 bindsym $mod+equal sticky toggle
