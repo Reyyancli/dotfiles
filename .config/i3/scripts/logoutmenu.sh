@@ -1,6 +1,6 @@
 #!/bin/bash
 
-x=$(echo -e "Shutdown\nReboot\nLogout\nSuspend\nHibernate" | dmenu -i -p "What do you want to do?")
+x=$(echo -e "Shutdown\nReboot\nReboot to UEFI\nLogout\nSuspend\nHibernate" | dmenu -i -p "What do you want to do?")
 
 if [  "$x" == "Shutdown" ]; then
 	systemctl poweroff
@@ -12,5 +12,7 @@ elif [  "$x" == "Logout" ]; then
 	i3-msg exit
 elif [  "$x" == "Hibernate" ]; then
 	systemctl hibernate
+elif [  "$x" == "Reboot to UEFI" ]; then
+	systemctl reboot --firmware-setup
 fi
 
