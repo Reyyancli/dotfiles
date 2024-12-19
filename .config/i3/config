@@ -36,6 +36,7 @@ for_window [class="Mousepad"] floating enable
 for_window [class="Deadbeef"] floating enable
 for_window [class="gwenview"] floating enable
 for_window [class="dolphin"] floating enable
+for_window [class="Free Download Manager"] floating enable
 
 # Picom
 bindsym $Mod+F11 exec picom
