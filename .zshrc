@@ -30,3 +30,4 @@ alias n="nvim"
 export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/reyyan/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 
 export PATH=$PATH:/home/reyyan/.spicetify
+export LIBVIRT_DEFAULT_URI="qemu:///system"
