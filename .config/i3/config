@@ -18,7 +18,7 @@ exec_always nm-applet
 
 # Sets variables
 set $mod Mod4
-set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color 7DABEF -k --keyhl-color=C2EEFD --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=C2EEFD --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=C2EEFD --greeter-pos="920:460" --ringver-color=C2EEFD -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=C2EEFD
+set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color E57255 -k --keyhl-color=F2A686 --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=F2A686 --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=F2A686 --greeter-pos="920:460" --ringver-color=F2A686 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F2A686
 
 # Pavucontrol for managing audio
 bindsym $Mod+0 exec pavucontrol
@@ -107,6 +107,10 @@ bindsym $mod+period exec gnome-characters
 default_border pixel 4
 default_floating_border pixel 5
 
+# Gaps
+gaps inner 10
+gaps outer 5
+
 bindsym $mod+Ctrl+u border pixel 6
 bindsym $mod+Ctrl+p border pixel 4 
 
@@ -120,7 +124,7 @@ bindsym $mod+Shift+minus scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#7DABEF	#7DABEF		#C2EEFD	#C2EEFD		#7DABEF
+client.focused	#E57255	#E57255		#F2A686	#F2A686		#E57255
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh

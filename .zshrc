@@ -31,3 +31,10 @@ export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/loc
 
 export PATH=$PATH:/home/reyyan/.spicetify
 export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# bun completions
+[ -s "/home/reyyan/.bun/_bun" ] && source "/home/reyyan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

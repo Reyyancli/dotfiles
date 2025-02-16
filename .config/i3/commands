@@ -59,10 +59,6 @@ bindsym Ctrl+$mod+Up resize shrink height 20px
 bindsym Ctrl+$mod+i resize shrink height 20px; resize shrink width 20px
 bindsym Ctrl+$mod+o resize grow height 20px; resize grow width 20px
 
-# Gaps
-gaps inner 10
-gaps outer 5
-
 bindsym $Mod+i gaps outer current plus 5
 bindsym $Mod+o gaps outer current minus 5
 
