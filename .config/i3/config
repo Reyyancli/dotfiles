@@ -140,3 +140,6 @@ bindsym $mod+Ctrl+comma exec $HOME/.config/i3/scripts/theme
 
 # Turn screen off
 bindsym $mod+F1 exec "sh -c 'sleep 1;xset dpms force off'"
+
+# dunst history pop
+bindsym $mod+Mod1+h exec dunstctl history-pop
