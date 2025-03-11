@@ -143,3 +143,6 @@ bindsym $mod+F1 exec "sh -c 'sleep 1;xset dpms force off'"
 
 # dunst history pop
 bindsym $mod+Mod1+h exec dunstctl history-pop
+
+# Function key buttons
+bindsym XF86Calculator exec gnome-calculator
