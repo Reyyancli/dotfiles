@@ -1,0 +1,156 @@
+{
+  "layer": "top",
+  "margin-left": 15,
+  "margin-right": 15,
+  "spacing": 4,
+  "modules-left": [
+    "niri/workspaces",
+    "niri/window"
+  ],
+  "modules-center": [
+    "custom/media",
+  ],
+  "modules-right": [
+    "privacy",
+    "pulseaudio",
+    "group/hardware",
+    "clock",
+    "tray",
+    "group/power#group-power"
+  ],
+  "group/hardware": {
+    "orientation": "inherit",
+    "click-to-reveal": true,
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "group-hardware-item",
+      "transition-left-to-right": false
+    },
+    "modules": ["cpu", "memory"]
+  },
+  "group/power#group-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 400,
+      "children-class": "group-power-item",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/shutdown",
+      "custom/lock",
+      "custom/logout",
+      "custom/reboot"
+    ]
+  },
+  "custom/logout": {
+    "format": "󰗼",
+    "tooltip": false,
+    "on-click": "niri msg action quit"
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/swaylock.sh"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/shutdown": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py prev 2> /dev/null",
+    "on-scroll-down": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py next 2> /dev/null",
+    "on-click": "activate",
+    "format-icons": {
+      //"1": "",
+      //"2": "",
+      //"3": "",
+      //"4": "",
+      //"5": "",
+      "urgent": "",
+      "focused": "⬤",
+      "default": "◯"
+    },
+    "sort-by-number": true
+  },
+  "niri/window": {},
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 14,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "timezone": "Asia/Dhaka",
+    "format": "   {:%OI:%M%p }   ",
+	"format-alt": "   {:%A, %B %d, %Y [%R]}   ",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+  "cpu": {
+	"interval": 2,
+    "format": "    {usage}%  "
+  },
+  "memory": {
+	"interval": 3,
+    "format": "{}% RAM"
+  },
+  "network": {
+    "format-wifi": "{essid} ({signalStrength}%)  ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰩠 ",
+    "format-linked": "{ifname} (No IP) 󰛳1 ",
+    "format-disconnected": "Disconnected 󰲛 ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format": "{ifname} via {gwaddr}"
+  },
+  "pulseaudio": {
+    "scroll-step": 2, // %, can be a float
+    "format": " {icon}   {volume}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+  },
+  "custom/media": {
+    "format": "{0}",
+    "return-type": "json",
+    "max-length": 40,
+    "escape": true,
+    "exec": "$HOME/.config/waybar/modules/mediaplayer.py 2> /dev/null",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  }
+}

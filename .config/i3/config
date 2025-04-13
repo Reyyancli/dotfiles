@@ -18,7 +18,7 @@ exec_always nm-applet
 
 # Sets variables
 set $mod Mod4
-set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color E57255 -k --keyhl-color=F2A686 --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=F2A686 --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=F2A686 --greeter-pos="920:460" --ringver-color=F2A686 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F2A686
+set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color D4D4D4 -k --keyhl-color=FFFFFF --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FFFFFF --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FFFFFF --greeter-pos="920:460" --ringver-color=FFFFFF -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FFFFFF
 
 # Pavucontrol for managing audio
 bindsym $Mod+0 exec pavucontrol
@@ -41,6 +41,7 @@ for_window [class="Free Download Manager"] floating enable
 
 # Picom
 bindsym $Mod+F11 exec picom
+bindsym $Mod+Shift+F11 exec picom --no-vsync
 bindsym $Mod+Mod1+F11 exec killall picom
 
 # Flameshot And spectacle for screenshots
@@ -124,7 +125,7 @@ bindsym $mod+Shift+minus scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#E57255	#E57255		#F2A686	#F2A686		#E57255
+client.focused	#D4D4D4	#D4D4D4		#FFFFFF	#FFFFFF		#D4D4D4
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
@@ -143,7 +144,7 @@ bindsym $mod+F1 exec "sh -c 'sleep 1;xset dpms force off'"
 
 # dunst history pop
 bindsym $mod+Mod1+h exec dunstctl history-pop
-bindsym $mod+Ctrl+h exec "terminator -e 'dunstctl history;read -n 1 -s -r'"
+bindsym $mod+Ctrl+h exec "terminator -e 'dunstctl history;read -n 1 -s -r' & sleep 0.5; i3-msg floating enable"
 
 # Function key buttons
 bindsym XF86Calculator exec gnome-calculator
