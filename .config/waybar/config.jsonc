@@ -50,7 +50,7 @@
   "custom/lock": {
     "format": "󰍁",
     "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/swaylock.sh"
+    "on-click": "hyprlock"
   },
   "custom/reboot": {
     "format": "󰜉",

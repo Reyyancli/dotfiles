@@ -420,6 +420,7 @@ binds {
 	// ###################################
 
     Mod+Return { spawn "terminator"; }
+    Mod+Shift+D { spawn "fuzzel" "--list-executables-in-path"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "hyprlock"; }
 	Mod+T { spawn "floorp"; }
