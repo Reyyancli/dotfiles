@@ -6,6 +6,11 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+debug {
+    wait-for-frame-completion-in-pipewire
+}
+
 input {
     keyboard {
         xkb {
@@ -69,7 +74,7 @@ input {
 // Remember to uncomment the node by removing "/-"!
 output "HDMI-A-1" {
     // Uncomment this line to disable this output.
-    // off
+    //off
 
     // Resolution and, optionally, refresh rate of the output.
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
@@ -95,11 +100,13 @@ output "HDMI-A-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    //position x=1920 y=0
+    position x=0 y=0
 }
 
 output "HDMI-A-4" {
 	mode "1920x1080"
+	position x=1280 y=0
+
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -343,8 +350,9 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+	match app-id="floorp"
+	match app-id="discord"
+	open-maximized true
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -357,6 +365,9 @@ window-rule {
 	match title="Volume Control"
 	match app-id="nm-connection-editor"
 	match app-id="org.kde.dolphin"
+	match app-id="org.gnome.Characters"
+	match app-id=r#"waydroid*"#
+	match app-id=r#"Waydroid*"#
     open-floating true
 }
 
@@ -378,6 +389,12 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
+
+window-rule {
+	match is-floating=true
+	baba-is-float true
+}
+
 
 window-rule {
 	match is-floating=true
@@ -414,6 +431,7 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+	Mod+Alt+Tab { spawn "~/.config/niri/scripts/chvt"; }
 
 
     // Keybinds for running things.
@@ -430,6 +448,8 @@ binds {
 	Mod+0 { spawn "pavucontrol"; }
 	Mod+Shift+E { spawn "dolphin"; }
 	Mod+F10 { spawn "otd-gui"; }
+	Mod+Shift+Period { spawn "gnome-characters"; }
+	Mod+Alt+Period { spawn "~/.config/fuzzel/fuzzel-emoji"; }
 
 	
 	// Dunst stuff
@@ -486,6 +506,9 @@ binds {
     Mod+Alt+K     { focus-monitor-down; }
     Mod+Alt+L     { focus-monitor-up; }
     Mod+Alt+Semicolon     { focus-monitor-right; }
+
+	Mod+Shift+Q { focus-column-left; }
+	Mod+Shift+W { focus-column-right; }
 
 
 	// Keybinds for Moving Windows
@@ -625,7 +648,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-	//Mod+Alt+F { toggle-windowed-fullscreen }
+	Mod+Alt+F { toggle-windowed-fullscreen; }
 
 
     // Center & Fill Column
