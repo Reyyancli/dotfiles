@@ -38,3 +38,12 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export SUDO_PROMPT=" $(tput setaf 15)$(tput sgr0)$(tput setab 15 setaf 0 bold)Sudo$(tput sgr0)$(tput setaf 15)$(tput sgr0) Enter password for $(tput setaf 6)%p$(tput sgr0): "
+
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+  tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi

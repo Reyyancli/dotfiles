@@ -11,6 +11,7 @@ window#waybar {
 }
 
 #tray,
+#mode,
 #network,
 #clock,
 #cpu,
@@ -28,7 +29,7 @@ window#waybar {
 }
 
 #workspaces {
-  padding: 0;
+  padding: 3;
   margin-left: 0;
   margin-right: 0;
 }
@@ -117,6 +118,7 @@ tooltip label {
 #custom-reboot,
 #custom-shutdown {
   /* default padding */
+  color: @text;
   padding-left: 4px;
   padding-right: 4px;
 
@@ -135,5 +137,6 @@ tooltip label {
 }
 
 #privacy-item {
+  color: @text;
   margin: 0 2px;
 }

@@ -73,3 +73,8 @@ bindsym $mod+Mod1+semicolon workspace next
 bindsym Mod1+Tab workspace back_and_forth
 bindsym $mod+Tab exec rofi -show window
 
+bindsym --whole-window $mod+button4 workspace prev
+bindsym --whole-window $mod+button5 workspace next
+
+bindsym --whole-window $mod+Shift+button4 exec i3-msg focus left
+bindsym --whole-window $mod+Shift+button5 exec i3-msg focus right

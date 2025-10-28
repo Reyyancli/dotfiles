@@ -366,9 +366,12 @@ window-rule {
 	match app-id="nm-connection-editor"
 	match app-id="org.kde.dolphin"
 	match app-id="org.gnome.Characters"
-	match app-id=r#"waydroid*"#
-	match app-id=r#"Waydroid*"#
     open-floating true
+}
+
+window-rule {	
+	match app-id=r#"Waydroid*"#
+	open-fullscreen true
 }
 
 // Example: block out two password managers from screen capture.
@@ -437,7 +440,7 @@ binds {
     // Keybinds for running things.
 	// ###################################
 
-    Mod+Return { spawn "terminator"; }
+    Alt+Return { spawn "terminator"; }
     Mod+Shift+D { spawn "fuzzel" "--list-executables-in-path"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "hyprlock"; }

@@ -4,8 +4,9 @@
   "margin-right": 15,
   "spacing": 4,
   "modules-left": [
-    "niri/workspaces",
-    "niri/window"
+    "sway/workspaces",
+	"sway/mode",
+	"sway/window"
   ],
   "modules-center": [
     "custom/media",
@@ -101,6 +102,14 @@
         "tooltip-icon-size": 24
       }
     ]
+  },
+  "sway/workspaces": {
+	  "format": "{icon}",
+	  "format-icons" : {
+	  "urgent": "",
+      "focused": "⬤",
+      "default": "◯"
+	  }
   },
   "tray": {
     "spacing": 10

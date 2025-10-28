@@ -13,7 +13,7 @@
 @define-color subtext0 #a6adc8;
 @define-color subtext1 #bac2de;
 
-@define-color surface0 #2b2c3b/*#313244*/;
+@define-color surface0 #313244;
 @define-color surface1 #45475a;
 @define-color surface2 #585b70;
 
@@ -35,3 +35,4 @@
 @define-color pink      #f5c2e7;
 @define-color flamingo  #f2cdcd;
 @define-color rosewater #f5e0dc;
+

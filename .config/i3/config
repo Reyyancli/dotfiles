@@ -15,10 +15,12 @@ exec_always nitrogen --restore
 exec_always playerctld daemon
 exec_always /usr/lib/polkit-kde-authentication-agent-1
 exec_always nm-applet
+exec_always obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 
 # Sets variables
 set $mod Mod4
 set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color D4D4D4 -k --keyhl-color=FFFFFF --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=FFFFFF --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=FFFFFF --greeter-pos="920:460" --ringver-color=FFFFFF -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=FFFFFF
+bindsym $Mod+F12 exec xtrlock
 
 # Pavucontrol for managing audio
 bindsym $Mod+0 exec pavucontrol
@@ -110,7 +112,7 @@ default_floating_border pixel 5
 
 # Gaps
 gaps inner 10
-gaps outer 5
+gaps outer 4
 
 bindsym $mod+Ctrl+u border pixel 6
 bindsym $mod+Ctrl+p border pixel 4 
@@ -120,8 +122,8 @@ bindsym $mod+Mod1+n exec $HOME/.config/i3/scripts/umountscript
 bindsym $mod+n exec $HOME/.config/i3/scripts/mountscript
 
 # Scratchpad
-bindsym $mod+minus move scratchpad
-bindsym $mod+Shift+minus scratchpad show
+bindsym $mod+Shift+S move scratchpad
+bindsym $mod+Mod1+S scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
