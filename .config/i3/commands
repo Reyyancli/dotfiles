@@ -59,11 +59,14 @@ bindsym Ctrl+$mod+Up resize shrink height 20px
 bindsym Ctrl+$mod+i resize shrink height 20px; resize shrink width 20px
 bindsym Ctrl+$mod+o resize grow height 20px; resize grow width 20px
 
-bindsym $Mod+i gaps outer current plus 5
-bindsym $Mod+o gaps outer current minus 5
+#bindsym $Mod+i gaps outer current plus 5
+#bindsym $Mod+o gaps outer current minus 5
 
-bindsym $Mod+Shift+i gaps inner current plus 5
-bindsym $Mod+Shift+o gaps inner current minus 5
+bindsym $Mod+u workspace next
+bindsym $Mod+i workspace prev
+
+#bindsym $Mod+Shift+i gaps inner current plus 5
+#bindsym $Mod+Shift+o gaps inner current minus 5
 
 # Next and Previous workspaces
 bindsym $mod+Mod1+j workspace prev

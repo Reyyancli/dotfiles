@@ -1,6 +1,6 @@
 #!/bin/bash
 
-x=$(echo -e "Orange\nBlue\nGreen\nYellow\nCream\nPurwhite\nWhilue\nPink\nWhite\nWhiteInverted [bugged]\n[Fix color scheme]" | dmenu -i -p "Select theme")
+x=$(echo -e "Orange\nPale\nBlue\nGreen\nYellow\nCream\nPurwhite\nWhilue\nPink\nWhite\nWhiteInverted [bugged]\n[Fix color scheme]" | dmenu -i -p "Select theme")
 
 # Searched the values in polybar config
 # This searches the polybar config file for the values because i dont feel like figuring out how to do it with the i3 config
@@ -26,6 +26,8 @@ echo bgalt: $bgalt
 OrangeP=E57255
 OrangeS=F2A686
 OrangeB=F77B5C
+PaleP=F1B8A0
+PaleS=FFE8D5
 BlueP=7DABEF
 BlueS=C2EEFD
 GreenP=4ACB66
@@ -53,6 +55,11 @@ DarkBGalt=242B3D
 
 if [ "$x" == "Orange" ]; then
 	sed -i -e "s/$primary/$OrangeP/Ig" -e "s/$secondary/$OrangeS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
+	i3-msg restart
+	killall polybar
+	polybar &
+elif [ "$x" == "Pale" ]; then 
+	sed -i -e "s/$primary/$PaleP/Ig" -e "s/$secondary/$PaleS/Ig" -e "s/$background/$DarkBG/Ig" -e "s/$bgalt/$DarkBGalt/Ig" $HOME/.config/i3/config $HOME/.config/polybar/config.ini $HOME/.config/starship.toml
 	i3-msg restart
 	killall polybar
 	polybar &
