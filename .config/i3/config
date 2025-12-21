@@ -19,7 +19,7 @@ exec obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 
 # Sets variables
 set $mod Mod4
-set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color 7DABEF -k --keyhl-color=C2EEFD --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=C2EEFD --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=C2EEFD --greeter-pos="920:460" --ringver-color=C2EEFD -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=C2EEFD
+set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color EACD4C -k --keyhl-color=F9F5BB --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=F9F5BB --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=F9F5BB --greeter-pos="920:460" --ringver-color=F9F5BB -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F9F5BB
 bindsym $Mod+F12 exec xtrlock
 
 # Pavucontrol for managing audio
@@ -51,7 +51,7 @@ bindsym $Mod+Mod1+F11 exec killall picom
 bindsym Print exec --no-startup-id flameshot gui
 
 for_window [class="spectacle"] floating enable
-bindsym Shift+Print exec spectacle
+bindsym Shift+Print exec spectacle --activewindow
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -124,11 +124,11 @@ bindsym $mod+n exec $HOME/.config/i3/scripts/mountscript
 
 # Scratchpad
 bindsym $mod+Shift+S move scratchpad
-bindsym $mod+Mod1+S scratchpad show
+bindsym $mod+Mod1+S [class=.*] scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#7DABEF	#7DABEF		#C2EEFD	#C2EEFD		#7DABEF
+client.focused	#EACD4C	#EACD4C		#F9F5BB	#F9F5BB		#EACD4C
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
