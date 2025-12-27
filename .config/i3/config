@@ -134,7 +134,7 @@ client.focused	#EACD4C	#EACD4C		#F9F5BB	#F9F5BB		#EACD4C
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
 
 # Lock
-bindsym $mod+Mod1+l exec $lock
+bindsym $mod+Mod1+l exec --no-startup-id $lock 
 
 # Bind for making floating window sticky
 bindsym $mod+equal sticky toggle

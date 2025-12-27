@@ -36,9 +36,9 @@ right_format = "$python $cmd_duration $git_branch"
 # This shows where youre at
 [directory]
 
- style = "bg:#7B79A2 fg:#442219"
+ style = "bg:#EACD4C fg:#442219"
  read_only = " 🔑"
- format = "[[$read_only ](fg:#7B79A2 bg:#7B79A2)$path[](fg:#7B79A2)]($style)"
+ format = "[[$read_only ](fg:#EACD4C bg:#EACD4C)$path[](fg:#EACD4C)]($style)"
 
 # This is unicode for the directories
 [directory.substitutions]
@@ -56,8 +56,8 @@ right_format = "$python $cmd_duration $git_branch"
 [username]
 
  show_always = true
- style_user = "bg:#FCEFE3 fg:#442219"
- format = "[ あ $user[](fg:#FCEFE3 bg:#7B79A2)]($style)"
+ style_user = "bg:#F9F5BB fg:#442219"
+ format = "[ あ $user[](fg:#F9F5BB bg:#EACD4C)]($style)"
 
 # If youre in a git branch this shows it
 [git_branch]
