@@ -690,14 +690,6 @@ binds {
     Mod+Backspace { spawn "~/.config/niri/scripts/logoutmenu.sh"; }
     Ctrl+Alt+Delete { quit; }
 
-
-	// Scripts for mounting my drives
-	// ###################################
-
-	Mod+N { spawn "~/.config/niri/scripts/mountscript"; }
-	Mod+Alt+N { spawn "~/.config/niri/scripts/umountscript"; }
-
-
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
 	// ###################################
