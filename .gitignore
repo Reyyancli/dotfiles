@@ -4,3 +4,5 @@
 .config/niri/scripts/mountscript
 .config/niri/scripts/umountscript
 .config/niri/scripts/chvt
+.config/hypr/scripts/mountscript
+.config/hypr/scripts/umountscript
