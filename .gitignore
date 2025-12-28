@@ -3,3 +3,4 @@
 .config/i3/mystuff
 .config/niri/scripts/mountscript
 .config/niri/scripts/umountscript
+.config/niri/scripts/chvt
