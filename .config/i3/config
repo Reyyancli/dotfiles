@@ -118,10 +118,6 @@ gaps outer 4
 bindsym $mod+Ctrl+u border pixel 6
 bindsym $mod+Ctrl+p border pixel 4 
 
-# Mount and umount scripts
-bindsym $mod+Mod1+n exec $HOME/.config/i3/scripts/umountscript
-bindsym $mod+n exec $HOME/.config/i3/scripts/mountscript
-
 # Scratchpad
 bindsym $mod+Shift+S move scratchpad
 bindsym $mod+Mod1+S [class=.*] scratchpad show
