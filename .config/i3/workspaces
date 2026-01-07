@@ -59,17 +59,17 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+C mode "Monitor"
 mode "Monitor"{
 
-	bindsym $mod+1 workspace number $ws10
-	bindsym $mod+2 workspace number $ws11
-	bindsym $mod+3 workspace number $ws12
-	bindsym $mod+4 workspace number $ws13
-	bindsym $mod+5 workspace number $ws14
+	bindsym $mod+1 workspace number $ws10; mode "default"
+	bindsym $mod+2 workspace number $ws11; mode "default"
+	bindsym $mod+3 workspace number $ws12; mode "default"
+	bindsym $mod+4 workspace number $ws13; mode "default"
+	bindsym $mod+5 workspace number $ws14; mode "default"
 	
-	bindsym $mod+Shift+1 move container to workspace number $ws10
-	bindsym $mod+Shift+2 move container to workspace number $ws11
-	bindsym $mod+Shift+3 move container to workspace number $ws12
-	bindsym $mod+Shift+4 move container to workspace number $ws13
-	bindsym $mod+Shift+5 move container to workspace number $ws14
+	bindsym $mod+Shift+1 move container to workspace number $ws10; mode "default"
+	bindsym $mod+Shift+2 move container to workspace number $ws11; mode "default"
+	bindsym $mod+Shift+3 move container to workspace number $ws12; mode "default"
+	bindsym $mod+Shift+4 move container to workspace number $ws13; mode "default"
+	bindsym $mod+Shift+5 move container to workspace number $ws14; mode "default"
 
 	bindsym $mod+C mode "default"
 }

@@ -1,8 +1,9 @@
 # Swap containers
-bindsym $mod+p mark --add "swapee"; mode "swapper"; exec notify-send -a "System Message" -u low "Entered Swap Mode"
-mode "swapper" {
-	bindsym $mod+p swap container with mark "swapee"; unmark "swapee"; mode "default"; exec notify-send -a "i3 message" -u low "Finished Swap"
-	bindsym Escape mode "default"; exec notify-send -a "i3 message" -u low "Exiting Swap Mode" 
+bindsym $mod+S mark --add "swapee"; mode "swap"; exec notify-send -a "Swap" -u low "Marked $(xprop -id "$(xdotool getwindowfocus)" WM_CLASS | sed -E 's/.*"([^"]+)".*/\1/')"
+mode "swap" {
+	bindsym $mod+S swap container with mark "swapee"; unmark "swapee"; mode "default"
+	bindsym $mod+space swap container with mark "swapee"; unmark "swapee"; mode "default"
+	bindsym Escape mode "default"; exec notify-send -a "Swap" -u low "Exiting Swap Mode" 
 
 	set $fm HDMI-0
 	set $sm HDMI-1-2
@@ -22,11 +23,6 @@ mode "swapper" {
 	set $ws12 "12"
 	set $ws13 "13"
 	set $ws14 "14"
-	set $ws15 "15"
-	set $ws16 "16"
-	set $ws17 "17"
-	set $ws18 "18"
-	set $ws19 "19"
 
 	# switch to workspace
 	bindsym $mod+1 workspace number $ws1
@@ -43,10 +39,6 @@ mode "swapper" {
 	bindsym $mod+Mod1+3 workspace number $ws12
 	bindsym $mod+Mod1+4 workspace number $ws13
 	bindsym $mod+Mod1+5 workspace number $ws14
-	bindsym $mod+Mod1+6 workspace number $ws15
-	bindsym $mod+Mod1+7 workspace number $ws16
-	bindsym $mod+Mod1+8 workspace number $ws17
-	bindsym $mod+Mod1+9 workspace number $ws18
 
 	# change focus
 	bindsym $mod+j focus left

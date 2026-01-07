@@ -133,7 +133,7 @@ bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
 bindsym $mod+Mod1+l exec --no-startup-id $lock 
 
 # Bind for making floating window sticky
-bindsym $mod+equal sticky toggle
+bindsym $mod+p sticky toggle
 
 # Script for changing color scheme
 bindsym $mod+Ctrl+comma exec $HOME/.config/i3/scripts/theme
