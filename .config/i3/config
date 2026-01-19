@@ -19,7 +19,7 @@ exec obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 
 # Sets variables
 set $mod Mod4
-set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos 500 --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color EACD4C -k --keyhl-color=F9F5BB --time-font "Cute Cat" --time-pos="70:510" --bar-base-width 40 --date-color=F9F5BB --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="System Locked" --greeter-font "Cute Cat" --greeter-color=F9F5BB --greeter-pos="920:460" --ringver-color=F9F5BB -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F9F5BB
+set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos="x:y+h-520" --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color E57255 -k --keyhl-color=F2A686 --time-font "Cute Cat" --time-pos="x+70:y+h-510" --bar-base-width 40 --date-color=F2A686 --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="" --ringver-color=F2A686 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F2A686 -S 1
 bindsym $Mod+F12 exec xtrlock
 
 # Pavucontrol for managing audio
@@ -124,7 +124,7 @@ bindsym $mod+Mod1+S [class=.*] scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#EACD4C	#EACD4C		#F9F5BB	#F9F5BB		#EACD4C
+client.focused	#E57255	#E57255		#F2A686	#F2A686		#E57255
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
