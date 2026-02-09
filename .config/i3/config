@@ -13,7 +13,7 @@ exec_always export XDG_MENU_PREFIX=arch- && kbuildsycoca6 --noincremental
 exec_always --no-startup-id copyq
 exec_always nitrogen --restore
 exec_always playerctld daemon
-exec_always /usr/lib/polkit-kde-authentication-agent-1
+exec_always lxqt-policykit-agent
 exec_always nm-applet
 exec obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 

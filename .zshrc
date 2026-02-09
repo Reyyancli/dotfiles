@@ -1,4 +1,5 @@
 ## Plugins
+#source /usr/share/nvm/init-nvm.sh
 
 # autosuggestions
 source ~/git\ repos/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -27,7 +28,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 alias n="nvim"
-export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/reyyan/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/reyyan/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/share/pnpm
 
 export PATH=$PATH:/home/reyyan/.spicetify
 export LIBVIRT_DEFAULT_URI="qemu:///system"
@@ -47,3 +48,11 @@ fi
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+
+# pnpm
+export PNPM_HOME="/home/reyyan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
