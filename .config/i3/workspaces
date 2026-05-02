@@ -72,4 +72,5 @@ mode "Monitor"{
 	bindsym $mod+Shift+5 move container to workspace number $ws14; mode "default"
 
 	bindsym $mod+C mode "default"
+	bindsym Escape mode "default 
 }

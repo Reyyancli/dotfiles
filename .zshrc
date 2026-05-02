@@ -9,11 +9,14 @@ source ~/git\ repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 bindkey              '^I'         menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
+#bindkey '^[Oc' forward-word                                     #
+#bindkey '^[Od' backward-word                                    #
+#bindkey '^[[1;5D' backward-word                                 #
+#bindkey '^[[1;5C' forward-word                                  #
+#bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 
 # Manjaro configured
 source ~/git\ repos/manjaro-zsh-config/manjaro-zsh-config
-
-
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -56,3 +59,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/reyyan/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# cuda
+export PATH=/opt/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/opt/cuda/lib64
+

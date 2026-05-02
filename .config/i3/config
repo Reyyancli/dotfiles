@@ -19,7 +19,7 @@ exec obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 
 # Sets variables
 set $mod Mod4
-set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos="x:y+h-520" --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color E57255 -k --keyhl-color=F2A686 --time-font "Cute Cat" --time-pos="x+70:y+h-510" --bar-base-width 40 --date-color=F2A686 --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="" --ringver-color=F2A686 -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=F2A686 -S 1
+set $lock i3lock --bar-indicator -B 5 --bar-direction=2 --bar-pos="x:y+h-520" --bar-count 200 --bar-max-height 50 --bar-periodic-step 25 --bar-color 4ACB66 -k --keyhl-color=E0FDAD --time-font "Cute Cat" --time-pos="x+70:y+h-510" --bar-base-width 40 --date-color=E0FDAD --date-font "Cute Cat" --date-align 1 --time-align 1 --greeter-text="" --ringver-color=E0FDAD -p default -e --verif-font "Cute Cat" --wrong-font "Cute Cat" --ind-pos="920:510" --wrong-color=E0FDAD -S 1
 bindsym $Mod+F12 exec xtrlock
 
 # Pavucontrol for managing audio
@@ -87,7 +87,7 @@ bindsym Shift+XF86AudioPrev exec playerctld unshift
 floating_modifier $mod 
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
@@ -124,7 +124,7 @@ bindsym $mod+Mod1+S [class=.*] scratchpad show
 
 # Border
 # Class 	border	background	text	indicator	child_border
-client.focused	#E57255	#E57255		#F2A686	#F2A686		#E57255
+client.focused	#4ACB66	#4ACB66		#E0FDAD	#E0FDAD		#4ACB66
 
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
@@ -140,6 +140,7 @@ bindsym $mod+Ctrl+comma exec $HOME/.config/i3/scripts/theme
 
 # Turn screen off
 bindsym $mod+F1 exec "sh -c 'sleep 1;xset dpms force off'"
+bindsym $mod+Mod1+F1 exec "ddcutil setvcp D6 05"
 
 # dunst history pop
 bindsym $mod+Mod1+h exec dunstctl history-pop
