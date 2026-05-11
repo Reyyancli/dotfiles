@@ -15,7 +15,7 @@ yeah.. thats it.
 - [polybar](https://github.com/polybar/polybar) Config
 - [niri](https://github.com/YaLTeR/niri) Config
 - [neovim](https://github.com/neovim/neovim) Config
-    - Plugins not included
+    - Plugins included
 - [fuzzel](https://github.com/catppuccin/fuzzel) Config
 - [starship](https://github.com/starship/starship) Config
     - It is recommended that you install a nerdfont such as Hack 
