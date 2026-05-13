@@ -10,5 +10,26 @@ vim.keymap.set("v", "k", "j", { noremap = true })
 vim.keymap.set("v", "l", "k", { noremap = true })
 vim.keymap.set("v", ";", "l", { noremap = true })
 
+vim.keymap.set("n", "<A-o>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-i>", ":m .-2<CR>==")
+
+-- Remaps for switching windows
+vim.keymap.set("n", "<M-j>", "<C-w>h")
+vim.keymap.set("n", "<M-k>", "<C-w>j")
+vim.keymap.set("n", "<M-l>", "<C-w>k")
+vim.keymap.set("n", "<M-;>", "<C-w>l")
+
+-- Remaps for buffers
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
+vim.keymap.set("n", "<leader>bp", ":bprev<CR>")
+vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+
+-- Remaps for tabs
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>")
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
+vim.keymap.set("n", "<leader>td", ":tabclose<CR>")
+
 vim.keymap.set("i", "<C-BS>", "<C-w>")
 vim.keymap.set("i", "<C-H>", "<C-w>")
+
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
