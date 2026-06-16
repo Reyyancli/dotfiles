@@ -7,9 +7,12 @@ command_timeout = 60_000
 # What apperes on the right of the terminal
 right_format = "$python $cmd_duration $git_branch"
 
+palette = "colors"
 
-# All spaces at the beginning of each option is not needed
-# Its just to look better
+[palettes.colors]
+primary = "#7DABEF"
+secondary = "#C2EEFD"
+text = "#442219"
 
 
 # Single line command prompt
@@ -36,9 +39,9 @@ right_format = "$python $cmd_duration $git_branch"
 # This shows where youre at
 [directory]
 
- style = "bg:#EACD4C fg:#442219"
+ style = "bg:primary fg:text"
  read_only = " 🔑"
- format = "[[$read_only ](fg:#EACD4C bg:#EACD4C)$path[](fg:#EACD4C)]($style)"
+ format = "[[$read_only ](fg:primary bg:primary)$path[](fg:primary)]($style)"
 
 # This is unicode for the directories
 [directory.substitutions]
@@ -56,8 +59,8 @@ right_format = "$python $cmd_duration $git_branch"
 [username]
 
  show_always = true
- style_user = "bg:#F9F5BB fg:#442219"
- format = "[ あ $user[](fg:#F9F5BB bg:#EACD4C)]($style)"
+ style_user = "bg:secondary fg:text"
+ format = "[ あ $user[](fg:secondary bg:primary)]($style)"
 
 # If youre in a git branch this shows it
 [git_branch]

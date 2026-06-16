@@ -4,6 +4,7 @@ include ~/.config/i3/commands
 include ~/.config/i3/swap
 #include ~/.config/i3/kdei3config
 include ~/.config/i3/mystuff
+include ~/.config/i3/color
 focus_follows_mouse no
 
 # Things to always execute
@@ -27,6 +28,9 @@ bindsym $Mod+0 exec pavucontrol
 
 # Floating windows
 for_window [class="explorer.exe"] floating enable
+for_window [class="ninjabrainbot-Main"] floating enable
+for_window [class="Magnus"] floating enable
+for_window [class="gnome-calculator"] floating enable
 for_window [class="copyq"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Notepadqq"] floating enable
@@ -122,10 +126,6 @@ bindsym $mod+Ctrl+p border pixel 4
 bindsym $mod+Shift+S move scratchpad
 bindsym $mod+Mod1+S [class=.*] scratchpad show
 
-# Border
-# Class 	border	background	text	indicator	child_border
-client.focused	#4ACB66	#4ACB66		#E0FDAD	#E0FDAD		#4ACB66
-
 # Script for powercontrol
 bindsym $mod+slash exec $HOME/.config/i3/scripts/powercontrol.sh
 
@@ -136,7 +136,7 @@ bindsym $mod+Mod1+l exec --no-startup-id $lock
 bindsym $mod+p sticky toggle
 
 # Script for changing color scheme
-bindsym $mod+Ctrl+comma exec $HOME/.config/i3/scripts/theme
+bindsym $mod+Ctrl+comma exec python $HOME/.config/i3/scripts/Themer/App.py
 
 # Turn screen off
 bindsym $mod+F1 exec "sh -c 'sleep 1;xset dpms force off'"
