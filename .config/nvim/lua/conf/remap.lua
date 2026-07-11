@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pf", vim.cmd.Ex)
 
 vim.keymap.set("n", "j", "h", { noremap = true })
 vim.keymap.set("n", "k", "j", { noremap = true })
@@ -20,9 +20,9 @@ vim.keymap.set("n", "<M-l>", "<C-w>k")
 vim.keymap.set("n", "<M-;>", "<C-w>l")
 
 -- Remaps for buffers
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
-vim.keymap.set("n", "<leader>bp", ":bprev<CR>")
-vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+vim.keymap.set("n", "<leader>n", ":bnext<CR>")
+vim.keymap.set("n", "<leader>p", ":bprev<CR>")
+vim.keymap.set("n", "<leader>d", ":bd<CR>")
 
 -- Remaps for tabs
 vim.keymap.set("n", "<leader>tn", ":tabn<CR>")

@@ -1,13 +1,3 @@
-vim.lsp.config("lua_ls", {})
-vim.lsp.config("pyright", {})
-vim.lsp.config("rust_analyzer", {})
-
-vim.lsp.enable({
-  "lua_ls",
-  "pyright",
-  "rust_analyzer",
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local opts = { buffer = ev.buf }
@@ -38,8 +28,13 @@ vim.lsp.config("pyright", {
   capabilities = capabilities,
 })
 
+vim.lsp.config("ts_ls", {
+  capabilities = capabilities,
+})
 
 vim.lsp.enable({
   "lua_ls",
+  "ts_ls",
   "pyright",
 })
+
