@@ -1,6 +1,7 @@
 .config/i3/scripts/mountscript
 .config/i3/scripts/umountscript
 .config/i3/mystuff
+.config/i3/color
 .config/niri/scripts/mountscript
 .config/niri/scripts/umountscript
 .config/niri/scripts/chvt
