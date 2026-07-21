@@ -108,7 +108,7 @@ bindsym $mod+q kill
 bindsym $mod+comma exec nitrogen --head=2
 bindsym $mod+Mod1+comma exec nitrogen --head=1
 bindsym $mod+Mod1+period exec gnome-characters
-bindsym $mod+period exec .config/i3/rofi-emoji
+bindsym $mod+period exec rofimoji
 
 
 # Border

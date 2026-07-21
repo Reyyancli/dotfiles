@@ -20,8 +20,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+Shift+Ctrl+semicolon move container to output right; focus output right
-bindsym $mod+Shift+Ctrl+j move container to output left; focus output left
+bindsym $mod+Shift+Mod1+semicolon move container to output right; focus output right
+bindsym $mod+Shift+Mod1+j move container to output left; focus output left
 
 # split in horizontal and vertical orientation
 bindsym $mod+h split h
