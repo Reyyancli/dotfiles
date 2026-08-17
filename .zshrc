@@ -2,10 +2,10 @@
 #source /usr/share/nvm/init-nvm.sh
 
 # autosuggestions
-source ~/git\ repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/gitrepos/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # autocomplete
-source ~/git\ repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/gitrepos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 bindkey              '^I'         menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
@@ -16,7 +16,7 @@ bindkey "$terminfo[kcbt]" reverse-menu-complete
 #bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 
 # Manjaro configured
-source ~/git\ repos/manjaro-zsh-config/manjaro-zsh-config
+source ~/gitrepos/manjaro-zsh-config/manjaro-zsh-config
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -68,3 +68,22 @@ export PATH="$PATH:/home/reyyan/.lmstudio/bin"
 export PATH=/opt/cuda/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/opt/cuda/lib64
 
+# ytdlp fucntions type shi
+ytdl() {
+    local save_dir="${1:-$HOME/Videos}"
+    local url
+    url="$(xclip -o -selection clipboard)"
+
+    if [[ -z "$url" ]]; then
+        echo "Error: X11 clipboard is empty."
+        return 1
+    fi
+
+    echo "Downloading from: $url"
+    yt-dlp -P "$save_dir" \
+           -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/best" \
+           --merge-output-format mp4 \
+           --no-mtime \
+           -o "%(title)s [%(id)s].%(ext)s" \
+           "$url"
+}
