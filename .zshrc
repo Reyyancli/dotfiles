@@ -31,8 +31,13 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 alias n="nvim"
-export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/reyyan/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/share/pnpm
+alias na="nb add"          
+alias ne="nb edit"         
+alias ns="nb search"       
+alias nl="nb list"         
+alias nt="nb todos"        
 
+export PATH=/home/reyyan/.local/bin:/home/reyyan/.local/share/appimages:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/reyyan/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/share/pnpm
 export PATH=$PATH:/home/reyyan/.spicetify
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
@@ -69,7 +74,7 @@ export PATH=/opt/cuda/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/opt/cuda/lib64
 
 # ytdlp fucntions type shi
-ytdl() {
+dl() {
     local save_dir="${1:-$HOME/Videos}"
     local url
     url="$(xclip -o -selection clipboard)"
