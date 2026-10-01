@@ -6,10 +6,7 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
-
-debug {
-    wait-for-frame-completion-in-pipewire
-}
+prefer-no-csd
 
 input {
     keyboard {
@@ -114,7 +111,7 @@ output "HDMI-A-4" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 20
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -268,12 +265,23 @@ spawn-at-startup "copyq"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "hypridle"
 spawn-at-startup "kdeconnect-indicator"
+spawn-at-startup "tilda" "--dbus"
+spawn-at-startup "sunshine"
+spawn-at-startup "waytrogen" "-r"
+spawn-at-startup "obs" "--startreplaybuffer" "--minimize-to-tray" "--disable-shutdown-check"
+spawn-at-startup "floorp" "-p" "4play" "--headless"
+
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal"
+spawn-at-startup "systemctl" "--user" "import-environment" "QT_QPA_PLATFORM" "QT_STYLE_OVERRIDE" "QT_QPA_PLATFORMTHEME" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 // Or, if you built it by hand:
 // spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
 
 environment {
     DISPLAY ":1";
-	QT_QPA_PLATFORM "wayland"
+	QT_QPA_PLATFORM "wayland;xcb"
+    QT_STYLE_OVERRIDE "kvantum"
+    QT_QPA_PLATFORMTHEME "qt6ct"
 	XDG_CURRENT_DESKTOP "niri"
 }
 
@@ -320,7 +328,7 @@ animations {
     }
 
     horizontal-view-movement {
-        spring damping-ratio=0.9 stiffness=400 epsilon=0.0001
+        spring damping-ratio=0.88 stiffness=450 epsilon=0.00001
     }
 
     window-movement {
@@ -355,6 +363,19 @@ window-rule {
 	open-maximized true
 }
 
+// Allow tearing only when osu! has keyboard focus.
+window-rule {
+    match app-id="^osu!$" is-focused=true
+    match app-id="^gamescope$" is-focused=true
+
+    allow-tearing true
+}
+
+window-rule {
+    match app-id="^Tilda$"
+    open-floating true
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -366,6 +387,7 @@ window-rule {
 	match app-id="nm-connection-editor"
 	match app-id="org.kde.dolphin"
 	match app-id="org.gnome.Characters"
+	match app-id="satty"
     open-floating true
 }
 
@@ -395,7 +417,7 @@ window-rule {
 
 window-rule {
 	match is-floating=true
-	baba-is-float true
+	baba-is-float false
 }
 
 
@@ -430,6 +452,7 @@ binds {
     //
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
+	Super+Shift+T { spawn "tilda" "-T"; }
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
@@ -440,20 +463,20 @@ binds {
     // Keybinds for running things.
 	// ###################################
 
-    Alt+Return { spawn "terminator"; }
+    Mod+Return { spawn "terminator"; }
     Mod+Shift+D { spawn "fuzzel" "--list-executables-in-path"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "hyprlock"; }
 	Mod+T { spawn "floorp"; }
-	Mod+Y { spawn "discord"; }
+	Mod+Y { spawn-sh "discord & vesktop"; }
 	Mod+Alt+Y { spawn "spotify-launcher" "--skip-update"; }
 	Mod+Alt+V { spawn "copyq" "menu"; }
 	Mod+0 { spawn "pavucontrol"; }
 	Mod+Shift+E { spawn "dolphin"; }
 	Mod+F10 { spawn "otd-gui"; }
 	Mod+Shift+Period { spawn "gnome-characters"; }
-	Mod+Alt+Period { spawn "~/.config/fuzzel/fuzzel-emoji"; }
 
+	Mod+Period { spawn "rofimoji"; }
 	
 	// Dunst stuff
 	// ###################################
@@ -621,20 +644,15 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-
-    // Switches focus between the current and the previous workspace.
-	// ###################################
-
-    Alt+Tab { focus-workspace-previous; }
-
-
     // Expel & Consume
 	// ###################################
 
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
+    Mod+Ctrl+J  { consume-window-into-column; }
+    Mod+Ctrl+Semicolon { expel-window-from-column; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+Ctrl+Shift+J  { consume-or-expel-window-left; }
+    Mod+Ctrl+Shift+Semicolon { consume-or-expel-window-right; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
 
@@ -674,6 +692,7 @@ binds {
 	// ###################################
 
     Print { screenshot; }
+	Shift+Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty -f -"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
@@ -695,4 +714,68 @@ binds {
 	// ###################################
 
     Mod+F1 { power-off-monitors; }
+
+	Mod+Grave { spawn "obs-cmd" "replay" "save"; }
+	Mod+Ctrl+Grave { spawn "obs-cmd" "recording" "toggle"; }
+}
+
+recent-windows {
+	// off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#7fc8ffff"
+        urgent-color "#ff9999ff"
+        padding 10
+        corner-radius 10
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+    // Pre-select the "Output" scope when switching windows.
+    binds {
+        Alt+Tab         { next-window     scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window     scope="output" filter="app-id"; }
+        Alt+Shift+grave { previous-window scope="output" filter="app-id"; }
+    }
+}
+
+overview {
+    zoom 0.25
+    backdrop-color "#262626"
+
+    workspace-shadow {
+        // off
+        softness 40
+        spread 10
+        offset x=0 y=10
+        color "#00000050"
+    }
+}
+
+gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
+
+    hot-corners {
+        // off
+        top-left
+        // top-right
+        bottom-left
+        // bottom-right
+    }
 }

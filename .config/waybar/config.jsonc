@@ -4,7 +4,9 @@
   "margin-right": 15,
   "spacing": 4,
   "modules-left": [
-    "sway/workspaces",
+    "niri/workspaces",
+	"niri/window",
+	"sway/workspcaes",
 	"sway/mode",
 	"sway/window"
   ],
@@ -137,7 +139,7 @@
     "tooltip-format": "{ifname} via {gwaddr}"
   },
   "pulseaudio": {
-    "scroll-step": 2, // %, can be a float
+    "scroll-step": 5, // %, can be a float
     "format": " {icon}   {volume}",
     "format-icons": {
       "headphone": "",

@@ -108,8 +108,7 @@ bindsym $mod+q kill
 bindsym $mod+comma exec nitrogen --head=2
 bindsym $mod+Mod1+comma exec nitrogen --head=1
 bindsym $mod+Mod1+period exec gnome-characters
-bindsym $mod+period exec rofimoji
-
+bindsym $mod+period exec rofimoji --action clipboard
 
 # Border
 default_border pixel 4
