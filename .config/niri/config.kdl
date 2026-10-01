@@ -476,7 +476,7 @@ binds {
 	Mod+F10 { spawn "otd-gui"; }
 	Mod+Shift+Period { spawn "gnome-characters"; }
 
-	Mod+Period { spawn "rofimoji"; }
+	Mod+Period { spawn "rofimoji" "--selector" "fuzzel"; }
 	
 	// Dunst stuff
 	// ###################################
