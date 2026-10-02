@@ -63,6 +63,10 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -98,11 +102,15 @@ output "HDMI-A-1" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=0 y=0
+	backdrop-color "#313244"
 }
 
 output "HDMI-A-4" {
 	mode "1920x1080"
 	position x=1280 y=0
+	scale 1
+	focus-at-startup
+	backdrop-color "#313244"
 
 }
 
@@ -270,6 +278,7 @@ spawn-at-startup "sunshine"
 spawn-at-startup "waytrogen" "-r"
 spawn-at-startup "obs" "--startreplaybuffer" "--minimize-to-tray" "--disable-shutdown-check"
 spawn-at-startup "floorp" "-p" "4play" "--headless"
+spawn-at-startup "ags" "run"
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal"
@@ -363,6 +372,12 @@ window-rule {
 	open-maximized true
 }
 
+window-rule {
+    match app-id="Tilda"
+    open-floating true
+    default-floating-position x=0 y=12 relative-to="top"
+}
+
 // Allow tearing only when osu! has keyboard focus.
 window-rule {
     match app-id="^osu!$" is-focused=true
@@ -374,6 +389,9 @@ window-rule {
 
 window-rule {
     match app-id="^Tilda$"
+	focus-ring {
+		off
+	}
     open-floating true
 }
 
@@ -400,9 +418,10 @@ window-rule {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+	match app-id="^vesktop$"
 
     block-out-from "screen-capture"
 
@@ -416,12 +435,6 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
-
-window-rule {
-	match is-floating=true
-	baba-is-float false
-}
-
 
 window-rule {
 	match is-floating=true
@@ -476,7 +489,7 @@ binds {
     // Keybinds for running things.
 	// ###################################
 
-    Mod+Return { spawn "terminator"; }
+    Mod+Return { spawn "alacritty"; }
     Mod+Shift+D { spawn "fuzzel" "--list-executables-in-path"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "hyprlock"; }

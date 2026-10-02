@@ -11,9 +11,11 @@
 	"sway/window"
   ],
   "modules-center": [
-    "custom/media",
+    //"custom/media",
+	"mpris",
   ],
   "modules-right": [
+	"keyboard-state",
     "privacy",
     "pulseaudio",
     "group/hardware",
@@ -47,22 +49,26 @@
   },
   "custom/logout": {
     "format": "󰗼",
-    "tooltip": false,
+    "tooltip": true,
+	"tooltip-format": "Logout",
     "on-click": "niri msg action quit"
   },
   "custom/lock": {
     "format": "󰍁",
-    "tooltip": false,
+    "tooltip": true,
+	"tooltip-format": "Lock",
     "on-click": "hyprlock"
   },
   "custom/reboot": {
     "format": "󰜉",
-    "tooltip": false,
+    "tooltip": true,
+	"tooltip-format": "Reboot",
     "on-click": "reboot"
   },
   "custom/shutdown": {
     "format": "",
-    "tooltip": false,
+    "tooltip": true,
+	"tooltip-format": "Shutdown",
     "on-click": "shutdown now"
   },
   "niri/workspaces": {
@@ -83,6 +89,14 @@
     },
     "sort-by-number": true
   },
+  "keyboard-state": {
+	"capslock": true,
+	"format": "{icon}",
+	"format-icons": {
+		"locked": "",
+		"unlocked": ""
+	}
+	},
   "niri/window": {},
   "privacy": {
     "icon-spacing": 4,
@@ -119,9 +133,9 @@
   },
   "clock": {
     "timezone": "Asia/Dhaka",
-    "format": "   {:%OI:%M%p }   ",
-	"format-alt": "   {:%A, %B %d, %Y [%R]}   ",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "   {:%OI:%M %p}   ",
+	"format-alt": "   {:%R}   ",
+    "tooltip-format": "<big>{:%d %A}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "cpu": {
 	"interval": 2,
@@ -164,5 +178,19 @@
     "on-click-right": "playerctl stop",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
-  }
+  },
+  "mpris": {
+	"format": "{player_icon} {artist} - {title}",
+	"format-paused": "{status_icon} {artist} - {title}",
+	"tooltip-format": "{album}",
+	"player-icons": {
+		"default": "  ",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "  "
+	},
+	// "ignored-players": ["firefox"]
+}
+
 }
