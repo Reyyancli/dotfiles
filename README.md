@@ -6,6 +6,7 @@ yeah.. thats it.
 ## Whats included?
 - Love from me ⊂(￣▽￣)⊃
 - [i3](https://github.com/i3/i3) Config
+- [AGS](https://github.com/aylur/ags) Config
 - [picom](https://github.com/yshui/picom) Config
 - [Hyprland](https://github.com/hyprwm/Hyprland) Config
     - Currently configured with hyprscroller which is now archived and broken so you may have to fix the bindings yourself.

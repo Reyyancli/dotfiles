@@ -1,0 +1,89 @@
+* {
+  all: unset;
+  font-family: "MesloLGS Nerd Font Propo", "Roboto", sans-serif;
+}
+
+.m3-card {
+  border-radius: 24px;
+  padding: 18px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timer-stopped {
+  background-color: rgba(43, 41, 48, 0.88);
+  border: 1px solid rgba(208, 188, 255, 0.12);
+  color: #e6e0e9;
+
+  .card-icon { color: #d0bcff; }
+  .card-title { color: #cbd4f4; }
+  .timer-display { color: #e8def8; font-size: 32px; font-weight: bold; margin: 4px 0; }
+
+  .m3-btn {
+    background-color: #4a4458;
+    color: #e8def8;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    &:hover { background-color: #625b71; }
+  }
+
+  .m3-btn-subtle {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #cac4d0;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    &:hover { background-color: rgba(255, 255, 255, 0.12); }
+  }
+}
+
+.timer-running {
+  background-color: #e8def8;
+  border: 1px solid #d0bcff;
+  color: #1d1b20;
+
+  .card-icon { color: #381e72; }
+  .card-title { color: #1d1b20; }
+  .timer-display { color: #1d1b20; font-size: 32px; font-weight: bold; margin: 4px 0; }
+
+  .m3-btn {
+    background-color: #381e72;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    &:hover { background-color: #4f378b; }
+  }
+
+  .m3-btn-subtle {
+    background-color: rgba(29, 27, 32, 0.12);
+    color: #1d1b20;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    &:hover { background-color: rgba(29, 27, 32, 0.22); }
+  }
+}
+
+/* Multi-line notes */
+.note-scroll {
+  background-color: rgba(29, 27, 32, 0.65);
+  border-radius: 16px;
+  border: 1px solid rgba(208, 188, 255, 0.12);
+
+  &:focus-within { border-color: #d0bcff; }
+}
+
+textview.note-input {
+  font-size: 14px;
+  color: #e6e0e9;
+  caret-color: #d0bcff;
+
+  text {
+    background-color: transparent;
+    color: #e6e0e9;
+  }
+  text selection { background-color: rgba(208, 188, 255, 0.35); }
+}
