@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+import json
+import os
+import subprocess
+import sys
+
+STACK_FILE = "/tmp/niri_scratchpad_stack.json"
+SCRATCH_WS = "scratchpad"
+
+def niri_json(cmd):
+    res = subprocess.run(["niri", "msg", "-j", cmd], capture_output=True, text=True)
+    return json.loads(res.stdout) if res.returncode == 0 else []
+
+def niri_action(*args):
+    subprocess.run(["niri", "msg", "action"] + [str(a) for a in args])
+
+def get_stack():
+    if os.path.exists(STACK_FILE):
+        try:
+            with open(STACK_FILE, "r") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
+def save_stack(stack):
+    with open(STACK_FILE, "w") as f:
+        json.dump(stack, f)
+
+def get_ws_target(ws):
+    if not ws:
+        return "1"
+    return ws.get("name") if ws.get("name") else str(ws.get("idx", 1))
+
+def main():
+    mode = sys.argv[1] if len(sys.argv) > 1 else "toggle"
+    windows = niri_json("windows")
+    workspaces = niri_json("workspaces")
+    stack = get_stack()
+
+    focused_win = next((w for w in windows if w.get("is_focused")), None)
+    focused_ws = next((w for w in workspaces if w.get("is_focused")), None)
+
+    if not focused_ws:
+        return
+
+    current_ws = get_ws_target(focused_ws)
+    scratch_ws_obj = next((ws for ws in workspaces if ws.get("name") == SCRATCH_WS), None)
+    scratch_ws_id = scratch_ws_obj.get("id") if scratch_ws_obj else None
+
+    # --- DYNAMIC STACK PRUNING ---
+    # 1. Remove closed/dead window IDs.
+    # 2. Automatically forget windows on active workspaces that are no longer floating (tiled).
+    valid_windows_map = {w["id"]: w for w in windows}
+    pruned_stack = []
+    for wid in stack:
+        if wid in valid_windows_map:
+            w = valid_windows_map[wid]
+            w_ws_id = w.get("workspace_id")
+            is_in_scratch = (scratch_ws_id is not None and w_ws_id == scratch_ws_id)
+            is_floating = w.get("is_floating", False)
+
+            if is_in_scratch or is_floating:
+                pruned_stack.append(wid)
+    stack = pruned_stack
+
+    # Helper: filter floating windows physically sitting inside scratchpad workspace
+    def get_scratchpad_floating_windows():
+        if scratch_ws_id is None:
+            return []
+        return [
+            w for w in windows 
+            if w.get("workspace_id") == scratch_ws_id and w.get("is_floating", False)
+        ]
+
+    # --- 1. SEND CURRENT WINDOW TO SCRATCHPAD ---
+    if mode == "send":
+        if not focused_win:
+            return
+        wid = focused_win["id"]
+        if wid not in stack:
+            stack.append(wid)
+        save_stack(stack)
+
+        if not focused_win.get("is_floating"):
+            niri_action("toggle-window-floating")
+
+        niri_action("move-window-to-workspace", SCRATCH_WS)
+        niri_action("focus-workspace", current_ws)
+
+    # --- 2. TOGGLE / CYCLE ---
+    elif mode == "toggle":
+        # Case A: Focused on a scratchpad window sitting on screen that is STILL FLOATING -> Stash it back
+        if (
+            focused_win
+            and focused_win["id"] in stack
+            and focused_win.get("is_floating", False)
+            and current_ws != SCRATCH_WS
+        ):
+            curr_id = focused_win["id"]
+            niri_action("move-window-to-workspace", SCRATCH_WS)
+            niri_action("focus-workspace", current_ws)
+
+            # Check if other floating windows remain in scratchpad workspace to cycle up
+            scratch_wins = get_scratchpad_floating_windows()
+            avail_stack = [wid for wid in stack if any(w["id"] == wid for w in scratch_wins)]
+            
+            if avail_stack:
+                next_id = avail_stack[-1]
+                niri_action("focus-window", "--id", str(next_id))
+                niri_action("move-window-to-workspace", current_ws)
+                niri_action("focus-window", "--id", str(next_id))
+
+            save_stack(stack)
+            return
+
+        # Case B: Focused on a normal or tiled window -> Leave focused window untouched.
+        # Only pull floating windows currently residing in scratchpad workspace.
+        scratch_wins = get_scratchpad_floating_windows()
+        if not scratch_wins:
+            save_stack(stack)
+            return
+
+        # Target the most recent floating window in scratchpad
+        avail_stack = [wid for wid in stack if any(w["id"] == wid for w in scratch_wins)]
+        if avail_stack:
+            target_id = avail_stack[-1]
+        else:
+            target_id = scratch_wins[0]["id"]
+            if target_id not in stack:
+                stack.append(target_id)
+
+        niri_action("focus-window", "--id", str(target_id))
+        niri_action("move-window-to-workspace", current_ws)
+        niri_action("focus-window", "--id", str(target_id))
+
+    # --- 3. PULL ALL AND PURGE FROM SCRATCHPAD ---
+    elif mode == "pull-all":
+        scratch_wins = get_scratchpad_floating_windows()
+        if not scratch_wins:
+            save_stack(stack)
+            return
+
+        pulled_ids = {win["id"] for win in scratch_wins}
+
+        # Pull every scratchpad window onto the active workspace
+        for win in scratch_wins:
+            wid = win["id"]
+            niri_action("focus-window", "--id", str(wid))
+            niri_action("move-window-to-workspace", current_ws)
+
+        # Focus the last pulled window
+        if scratch_wins:
+            niri_action("focus-window", "--id", str(scratch_wins[-1]["id"]))
+
+        # Completely purge all pulled window IDs from the tracking stack
+        stack = [wid for wid in stack if wid not in pulled_ids]
+
+    save_stack(stack)
+
+if __name__ == "__main__":
+    main()
