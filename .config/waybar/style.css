@@ -49,6 +49,20 @@ window#waybar {
   border-radius: 1rem;
 }
 
+/* Unfocused: scale '◎' to match '○' without pushing bar height */
+#niri-workspace-scratchpad label {
+    font-size: 17px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+}
+
+/* Focused: reset back to standard 14px so '●' stays normal size */
+#niri-workspace-scratchpad.active label {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 #workspaces button:hover {
   background-color: @surface0;
   color: @rosewater;

@@ -367,6 +367,7 @@ window-rule {
 window-rule {
     match app-id="^osu!$" is-focused=true
     match app-id="^gamescope$" is-focused=true
+	match app-id="^Rythm Game$" is-focused=true
 
     allow-tearing true
 }
@@ -388,6 +389,7 @@ window-rule {
 	match app-id="org.kde.dolphin"
 	match app-id="org.gnome.Characters"
 	match app-id="satty"
+	match app-id="xdg-desktop-portal-gtk"
     open-floating true
 }
 
@@ -459,6 +461,17 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 	Mod+Alt+Tab { spawn "~/.config/niri/scripts/chvt"; }
 
+	// AI generated bullshi
+	// DOES NOT WORK WELL WITH WINDOW SLIDING ANIMTAIONS
+	//
+	// "send" sends a window to "scratchpad" named workspace, "toggle" toggles between
+	// windows in scratchpad, "pull-all" pulls all windows from scratchpad and 
+	// removes them from the list of windows
+	// 
+	// Putting a window on a column will remove it from scratchpad
+	Mod+S { spawn "~/.config/niri/scripts/niri-scratchpad" "send"; }
+	Mod+Shift+S { spawn "~/.config/niri/scripts/niri-scratchpad" "toggle"; }
+	Mod+Ctrl+S { spawn "~/.config/niri/scripts/niri-scratchpad" "pull-all"; }
 
     // Keybinds for running things.
 	// ###################################
@@ -585,8 +598,8 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
 
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Ctrl+U { move-workspace-down; }
+    Mod+Shift+Ctrl+I   { move-workspace-up; }
 
 
 	// Scroll Wheel Stuff
@@ -779,3 +792,9 @@ gestures {
         // bottom-right
     }
 }
+
+workspace "browser"
+workspace "secondary"
+workspace "main"
+workspace "extra"
+workspace "scratchpad"

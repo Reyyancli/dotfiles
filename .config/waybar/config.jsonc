@@ -78,7 +78,8 @@
       //"5": "",
       "urgent": "",
       "focused": "⬤",
-      "default": "◯"
+      "default": "◯",
+	  "scratchpad": "◎"
     },
     "sort-by-number": true
   },
