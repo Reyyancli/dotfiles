@@ -185,6 +185,8 @@
 	"format": "{player_icon} {artist} - {title}",
 	"format-paused": "{status_icon} {artist} - {title}",
 	"tooltip-format": "{album}",
+	"on-click-backward": "playerctld unshift",
+	"on-click-forward": "playerctl shift"
 	"player-icons": {
 		"default": "  ",
 		"mpv": "🎵"
