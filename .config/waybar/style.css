@@ -92,14 +92,11 @@ window#waybar.empty #window {
 
 #clock {
   color: @lavender;
-  padding-right: 0;
-  padding-left: 4px;
+
 }
 
 #cpu {
   color: @green;
-  padding-left: 0px;
-  padding-right: 0px
 }
 
 #memory {
@@ -112,13 +109,10 @@ window#waybar.empty #window {
 
 #pulseaudio {
   color: @pink;
-  /* no idea why it's needed, but without this it looks very bad */
-  padding-right: 8px;
-  padding-left: 0px;
 }
 
 #pulseaudio.muted {
-  color: @red;
+  color: @pinkishgray;
 }
 
 #tray {
