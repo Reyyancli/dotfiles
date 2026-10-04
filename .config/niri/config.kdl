@@ -214,15 +214,43 @@ window-rule {
 	}
 }
 
-/-window-rule {
-	match is-focused=false
+window-rule {
+    match is-window-cast-target=true
 
-	border {
+    focus-ring {
+		off
+    }
+
+    border {
 		on
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-	}
+		width 5
+		active-color "#f38ba8"
+        inactive-color "#f38ba8"
+
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
+window-rule {
+	match is-window-cast-target=true
+	match is-floating=true
+
+    shadow {
+		on
+        softness 100
+        spread 2
+        color "#7d0d2d70"
+    }
+}
+
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screencast"
 }
 
 binds {
@@ -233,6 +261,9 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 	Mod+Alt+Tab { spawn "~/.config/niri/scripts/chvt"; }
+
+	// something 
+	Mod+Backslash { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
 
 	// AI generated bullshi
 	// DOES NOT WORK WELL WITH WINDOW SLIDING ANIMTAIONS
@@ -322,6 +353,10 @@ binds {
 
 	Mod+Shift+Q { focus-column-left; }
 	Mod+Shift+W { focus-column-right; }
+	Mod+Alt+Q { focus-monitor-left;}
+	Mod+Alt+W { focus-monitor-right; }
+	Mod+Shift+Alt+Q { move-column-to-monitor-left; }
+	Mod+Shift+Alt+W { move-column-to-monitor-right; }
 
 
 	// Keybinds for Moving Windows
@@ -445,6 +480,7 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
+	Mod+M { maximize-window-to-edges; }
     Mod+Shift+F { fullscreen-window; }
 	Mod+Alt+F { toggle-windowed-fullscreen; }
 
