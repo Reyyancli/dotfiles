@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Sinks to skip (case-insensitive extended regex, matched against the sink name)
-IGNORE='sunshine|loopback'
+IGNORE='sunshine|loopback|easyeffects'
 
 # Names of all sinks except the ignored ones
 sinks=$(pactl list sinks | awk -v ign="$IGNORE" '
