@@ -200,6 +200,8 @@ window-rule {
 }
 
 window-rule {
+	draw-border-with-background false
+	tiled-state true
     geometry-corner-radius 10
     clip-to-geometry true
 }
@@ -236,8 +238,7 @@ window-rule {
 }
 
 window-rule {
-	match is-window-cast-target=true
-	match is-floating=true
+	match is-window-cast-target=true is-floating=true
 
     shadow {
 		on
@@ -245,6 +246,22 @@ window-rule {
         spread 2
         color "#7d0d2d70"
     }
+}
+
+window-rule {
+	match is-active=false
+	opacity 0.9
+	    background-effect {
+        blur true
+	}
+}
+
+window-rule {
+	match is-floating=true is-focused=false
+	opacity 0.3
+	    background-effect {
+        blur false
+	}
 }
 
 layer-rule {
