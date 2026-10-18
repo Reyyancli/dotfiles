@@ -6,17 +6,21 @@ import { interval } from "astal/time"
 const TextView = astalify<Gtk.TextView, Gtk.TextView.ConstructorProps>(Gtk.TextView)
 
 /* ───────── Timer state ───────── */
+const TIMER_FILE = `${GLib.get_user_cache_dir()}/desktop_timer.json`
+
 const running = Variable(false)
 const display = Variable("00:00")
 const hasTime = Variable(false)
 let startTime = 0 // ms timestamp when last started
 let elapsed = 0   // ms accumulated while paused
+let lastSave = 0
 
 const pad = (n: number) => String(n).padStart(2, "0")
 
+const totalMs = () => elapsed + (running.get() ? Date.now() - startTime : 0)
+
 function format(): string {
-  const total = elapsed + (running.get() ? Date.now() - startTime : 0)
-  const s = Math.floor(total / 1000)
+  const s = Math.floor(totalMs() / 1000)
   const secs = s % 60
   const mins = Math.floor(s / 60) % 60
   const hrs = Math.floor(s / 3600)
@@ -24,7 +28,32 @@ function format(): string {
 }
 
 const refresh = () => display.set(format())
-interval(250, refresh)
+
+function saveTimer() {
+  try {
+    writeFile(TIMER_FILE, JSON.stringify({ elapsed: totalMs() }))
+    lastSave = Date.now()
+  } catch (e) {
+    console.error("timer save failed", e)
+  }
+}
+
+function loadTimer() {
+  try {
+    const saved = JSON.parse(readFile(TIMER_FILE))
+    elapsed = Number(saved.elapsed) || 0
+  } catch {
+    elapsed = 0
+  }
+  hasTime.set(elapsed > 0)
+  refresh()
+}
+
+interval(250, () => {
+  refresh()
+  // while running, save about once a second
+  if (running.get() && Date.now() - lastSave >= 1000) saveTimer()
+})
 
 function toggle() {
   if (running.get()) {
@@ -36,6 +65,7 @@ function toggle() {
     hasTime.set(true)
   }
   refresh()
+  saveTimer()
 }
 
 function reset() {
@@ -44,7 +74,10 @@ function reset() {
   elapsed = 0
   startTime = 0
   refresh()
+  saveTimer()
 }
+
+loadTimer()
 
 /* ───────── Notes persistence ───────── */
 const NOTE_FILE = `${GLib.get_user_cache_dir()}/desktop_note.txt`

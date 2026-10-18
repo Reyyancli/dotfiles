@@ -12,6 +12,7 @@ spawn-at-startup "waytrogen" "-r"
 spawn-at-startup "obs" "--startreplaybuffer" "--minimize-to-tray" "--disable-shutdown-check"
 spawn-at-startup "floorp" "-p" "4play" "--headless"
 spawn-at-startup "ags" "run"
+spawn-at-startup "xembedsniproxy"
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal"
@@ -35,6 +36,8 @@ environment {
 }
 
 input {
+	focus-follows-mouse max-scroll-amount="0%"
+	disable-power-key-handling
     keyboard {
         xkb {
 			layout "us"
@@ -259,6 +262,15 @@ window-rule {
 }
 
 window-rule {
+	match app-id="lunatranslator_admin.exe"
+	match app-id="lunatranslator.exe"
+	    background-effect {
+        blur true
+	}
+
+}
+
+window-rule {
 	match is-floating=true is-focused=false
 	opacity 0.3
 	    background-effect {
@@ -336,6 +348,7 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+	Ctrl+XF86AudioMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 	XF86AudioNext { spawn "playerctl" "next"; }
 	XF86AudioPrev { spawn "playerctl" "previous"; }
 	XF86AudioPlay { spawn "playerctl" "play-pause"; }

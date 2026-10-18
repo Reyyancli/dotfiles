@@ -115,6 +115,10 @@ window#waybar.empty #window {
   color: @pinkishgray;
 }
 
+#pulseaudio.source-muted {
+  color: @green
+}
+
 #tray {
   padding-left: 12px;
   padding-right: 14px;

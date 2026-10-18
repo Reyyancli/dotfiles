@@ -155,7 +155,7 @@
   },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
-    "format": "{icon}   {volume}",
+    "format": "{icon}   {volume}{source_volume}",
 	"format-muted": "{icon}  muted({volume}) ",
     "format-icons": {
       "headphone": "",
@@ -187,6 +187,7 @@
 	"tooltip-format": "{album}",
 	"on-click-backward": "playerctld unshift",
 	"on-click-forward": "playerctl shift",
+	"max-length": 65,
 	"player-icons": {
 		"default": "  ",
 		"mpv": "🎵"
