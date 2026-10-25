@@ -13,6 +13,7 @@
   "modules-center": [
     //"custom/media",
 	"mpris",
+	"custom/uair"
   ],
   "modules-right": [
 	"keyboard-state",
@@ -21,7 +22,8 @@
     "group/hardware",
     "clock",
     "tray",
-    "group/power#group-power"
+	"idle_inhibitor"
+    //"group/power#group-power"
   ],
   "group/hardware": {
     "orientation": "inherit",
@@ -131,6 +133,13 @@
   "tray": {
     "spacing": 10
   },
+  "idle_inhibitor": {
+	"format": "{icon}",
+	"format-icons": {
+		"activated": "\uf06e",
+		"deactivated": "\uf070"
+  	},
+   },
   "clock": {
     "timezone": "Asia/Dhaka",
     "format": "  {:%OI:%M %p}",
@@ -180,6 +189,12 @@
     "on-click-right": "playerctl stop",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
+  },
+  "custom/uair": {
+	  "exec": "uair",
+	  "on-click": "uairctl toggle",
+	  "on-click-right": "uairctl next",
+	  "tooltip": false
   },
   "mpris": {
 	"format": "{player_icon} {artist} - {title}",

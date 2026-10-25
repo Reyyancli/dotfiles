@@ -23,11 +23,27 @@ window#waybar {
 #mpris,
 #keyboard-state label.locked,
 #custom-media,
+#custom-uair,
+#idle_inhibitor,
 .group-power {
   background-color: @surface0;
   margin: 12px 2px 0px 4px;
   padding: 0px 8px 0px 8px;
   border-radius: 0.7rem;
+}
+
+#idle_inhibitor {
+	padding-right: 15px;
+}
+
+#idle_inhibitor.activated {
+	background-color: @green;
+	color: @base;
+}
+
+#custom-uair {
+	color: @subtext0;
+	padding-right: 4px;
 }
 
 #mpris {
