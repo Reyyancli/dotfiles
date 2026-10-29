@@ -13,6 +13,7 @@ spawn-at-startup "obs" "--startreplaybuffer" "--minimize-to-tray" "--disable-shu
 spawn-at-startup "floorp" "-p" "4play" "--headless"
 spawn-at-startup "ags" "run"
 spawn-at-startup "xembedsniproxy"
+spawn-at-startup "aw-tauri"
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal"
@@ -267,6 +268,7 @@ window-rule {
 
 window-rule {
 	match is-active=false
+	exclude app-id="^osu!$"
 	opacity 0.9
 	    background-effect {
         blur true

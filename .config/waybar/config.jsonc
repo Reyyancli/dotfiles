@@ -141,9 +141,8 @@
   	},
    },
   "clock": {
-    "timezone": "Asia/Dhaka",
-    "format": "  {:%OI:%M %p}",
-	"format-alt": "  {:%R}",
+    "format": "   {:L%R (%a)}",
+	"format-alt": "  {:%OI:%M %p}",
     "tooltip-format": "<big>{:%d %A}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "cpu": {
