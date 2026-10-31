@@ -206,13 +206,15 @@
   "mpris": {
 	"format": "{player_icon} {artist} - {title}",
 	"format-paused": "{status_icon} {artist} - {title}",
-	"tooltip-format": "{album}",
+	"tooltip-format": "{player_icon} {title}\n\uf1fc   {artist}\n\uEFCC   {album}\n\uf02b   {player}",
 	"on-click-backward": "playerctld unshift",
 	"on-click-forward": "playerctl shift",
-	"max-length": 65,
+	"max-length": 35,
 	"player-icons": {
 		"default": "  ",
-		"mpv": "🎵"
+		"firefox": "\uf269  ",
+		"spotify": "\uf1bc  ",
+		"YoutubeMusic": "\uf16a  "
 	},
 	"status-icons": {
 		"paused": "  "
