@@ -13,7 +13,8 @@
   "modules-center": [
     //"custom/media",
 	"mpris",
-	"custom/uair"
+	"custom/uair",
+	"custom/dnd"
   ],
   "modules-right": [
 	"keyboard-state",
@@ -90,6 +91,13 @@
 	  "scratchpad": "◎"
     },
     "sort-by-number": true
+  },
+  "custom/dnd": {
+    "exec": "~/.config/waybar/modules/dunst-listener.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "dunstctl set-paused toggle",
+    "tooltip": true
   },
   "keyboard-state": {
 	"capslock": true,

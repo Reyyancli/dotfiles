@@ -24,6 +24,7 @@ window#waybar {
 #keyboard-state label.locked,
 #custom-media,
 #custom-uair,
+#custom-dnd,
 #idle_inhibitor,
 .group-power {
   background-color: @surface0;
@@ -32,13 +33,27 @@ window#waybar {
   border-radius: 0.7rem;
 }
 
+#custom-dnd.dnd {
+	color: @base;
+	background-color: @yellow;
+	transition: color 0.2s ease, background-color 0.2s ease
+}
+
+#custom-dnd {
+	color: @subtext0;
+	padding-right: 12px;
+	transition: color 0.2s ease, background-color 0.2s ease
+}
+
 #idle_inhibitor {
 	padding-right: 15px;
+	transition: color 0.2s ease, background-color 0.2s ease
 }
 
 #idle_inhibitor.activated {
 	background-color: @green;
 	color: @base;
+	transition: color 0.2s ease, background-color 0.2s ease
 }
 
 #custom-uair {
@@ -52,28 +67,27 @@ window#waybar {
 
 #workspaces {
   padding: 3;
+  min-height: 24px;
   margin-left: 0;
   margin-right: 0;
 }
 
 #workspaces button {
   color: @pink;
-  padding: 2px 4px;
+  padding: 0px 4px;
   margin: 0 2px;
-  box-shadow: inset 0 -3px transparent;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
   background-color: transparent;
   border-radius: 1rem;
 }
 
-#workspaces button.active {
+#workspaces button.focused {
   color: @flamingo;
-  border-radius: 1rem;
+  padding: 0px 4px;
 }
 
 /* Unfocused: scale '◎' to match '○' without pushing bar height */
 #niri-workspace-scratchpad label {
-    font-size: 17px;
+    font-size: 16px;
     margin-top: -2px;
     margin-bottom: -2px;
 }

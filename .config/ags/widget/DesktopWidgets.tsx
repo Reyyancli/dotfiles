@@ -102,7 +102,7 @@ function TimerCard() {
     >
       <box spacing={8}>
         <label className="card-icon" label="⏱" />
-        <label className="card-title" label="Timer" />
+        <label className="card-title" label="タイマー" />
       </box>
       <label
         className="timer-display"
@@ -114,7 +114,7 @@ function TimerCard() {
 			hexpand
 			className="m3-btn"
 			onClicked={toggle}
-			label={bind(running).as((r) => (r ? "Pause" : "Start"))}
+			label={bind(running).as((r) => (r ? "ポーズ" : "スタート"))}
 		  />
 		  <revealer
 			transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
@@ -126,7 +126,7 @@ function TimerCard() {
 				className="m3-btn-subtle"
 				widthRequest={157}
 				onClicked={reset}
-				label="Reset"
+				label="レセット"
 			  />
 			</box>
 		  </revealer>
@@ -140,7 +140,7 @@ function NotesCard() {
     <box vertical spacing={10} className="m3-card">
       <box spacing={8}>
         <label className="card-icon" label="󰏫" />
-        <label className="card-title" label="Quick Notes" />
+        <label className="card-title" label="ノート" />
       </box>
       <scrollable className="note-scroll" heightRequest={160}>
         <TextView
