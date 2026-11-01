@@ -50,7 +50,7 @@
 
 
     ### Misc ###
-    history_length = 20
+    history_length = 50
     dmenu = /usr/bin/fuzzel -d -p "dunst: "
     browser = /usr/bin/floorp -new-tab
     always_run_script = true

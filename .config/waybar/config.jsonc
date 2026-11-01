@@ -97,7 +97,13 @@
     "return-type": "json",
     "format": "{}",
     "on-click": "dunstctl set-paused toggle",
-    "tooltip": true
+    "menu": "on-click-right",
+    "menu-file": "~/.config/waybar/dnd-menu.xml",
+    "menu-actions": {
+        "pop": "dunstctl history-pop",
+        "history": "~/.config/waybar/scripts/dunst-history.sh",
+        "clear": "dunstctl history-clear"
+    }
   },
   "keyboard-state": {
 	"capslock": true,

@@ -1,0 +1,1 @@
+../../waybar/scripts/dunst-history.sh

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <child>
+      <object class="GtkMenuItem" id="pop">
+        <property name="label">Show last notification</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="history">
+        <property name="label">Browse history…</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="sep"/>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="clear">
+        <property name="label">Clear history</property>
+      </object>
+    </child>
+  </object>
+</interface>
