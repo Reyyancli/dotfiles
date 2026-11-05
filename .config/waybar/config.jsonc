@@ -1,231 +1,238 @@
 {
-  "layer": "top",
-  "margin-left": 15,
-  "margin-right": 15,
-  "spacing": 4,
-  "modules-left": [
-    "niri/workspaces",
-	"niri/window",
-	"sway/workspcaes",
-	"sway/mode",
-	"sway/window"
-  ],
-  "modules-center": [
-    //"custom/media",
-	"mpris",
+	"layer": "top",
+	"margin-left": 15,
+	"margin-right": 15,
+	"spacing": 4,
+	"modules-left": [
+		"niri/workspaces",
+		"niri/window",
+		"sway/workspcaes",
+		"sway/mode",
+		"sway/window"
+	],
+	"modules-center": [
+	//"custom/media",
 	"custom/uair",
+	"mpris",
 	"custom/dnd"
-  ],
-  "modules-right": [
-	"keyboard-state",
-    "privacy",
-    "pulseaudio",
-    "group/hardware",
-    "clock",
-    "tray",
-	"idle_inhibitor"
-    //"group/power#group-power"
-  ],
-  "group/hardware": {
-    "orientation": "inherit",
-    "click-to-reveal": true,
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "group-hardware-item",
-      "transition-left-to-right": false
-    },
-    "modules": ["cpu", "memory"]
-  },
-  "group/power#group-power": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 400,
-      "children-class": "group-power-item",
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/shutdown",
-      "custom/lock",
-      "custom/logout",
-      "custom/reboot"
-    ]
-  },
-  "custom/logout": {
-    "format": "󰗼",
-    "tooltip": true,
-	"tooltip-format": "Logout",
-    "on-click": "niri msg action quit"
-  },
-  "custom/lock": {
-    "format": "󰍁",
-    "tooltip": true,
-	"tooltip-format": "Lock",
-    "on-click": "hyprlock"
-  },
-  "custom/reboot": {
-    "format": "󰜉",
-    "tooltip": true,
-	"tooltip-format": "Reboot",
-    "on-click": "reboot"
-  },
-  "custom/shutdown": {
-    "format": "",
-    "tooltip": true,
-	"tooltip-format": "Shutdown",
-    "on-click": "shutdown now"
-  },
-  "niri/workspaces": {
-    "format": "{icon}",
-    "on-scroll-up": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py prev 2> /dev/null",
-    "on-scroll-down": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py next 2> /dev/null",
-    "on-click": "activate",
-    "format-icons": {
-      //"1": "",
-      //"2": "",
-      //"3": "",
-      //"4": "",
-      //"5": "",
-      "urgent": "",
-      "focused": "⬤",
-      "default": "◯",
-	  "scratchpad": "◎"
-    },
-    "sort-by-number": true
-  },
-  "custom/dnd": {
-    "exec": "~/.config/waybar/modules/dunst-listener.sh",
-    "return-type": "json",
-    "format": "{}",
-    "on-click": "dunstctl set-paused toggle",
-    "menu": "on-click-right",
-    "menu-file": "~/.config/waybar/dnd-menu.xml",
-    "menu-actions": {
-        "pop": "dunstctl history-pop",
-        "history": "~/.config/waybar/scripts/dunst-history.sh",
-        "clear": "dunstctl history-clear"
-    }
-  },
-  "keyboard-state": {
-	"capslock": true,
-	"format": "{icon}",
-	"format-icons": {
-		"locked": "",
-		"unlocked": ""
-	}
+	],
+	"modules-right": [
+		"keyboard-state",
+		"upower",
+		"privacy",
+		"pulseaudio",
+		"group/hardware",
+		"clock",
+		"tray",
+		"idle_inhibitor"
+	//"group/power#group-power"
+	],
+	"group/hardware": {
+		"orientation": "inherit",
+		"click-to-reveal": true,
+		"drawer": {
+			"transition-duration": 500,
+			"children-class": "group-hardware-item",
+			"transition-left-to-right": false
+		},
+		"modules": ["cpu", "memory"]
 	},
-  "niri/window": {},
-  "privacy": {
-    "icon-spacing": 4,
-    "icon-size": 14,
-    "transition-duration": 250,
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-out",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      }
-    ]
-  },
-  "sway/workspaces": {
-	  "format": "{icon}",
-	  "format-icons" : {
+	"group/power#group-power": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 400,
+			"children-class": "group-power-item",
+			"transition-left-to-right": false
+		},
+		"modules": [
+			"custom/shutdown",
+			"custom/lock",
+			"custom/logout",
+			"custom/reboot"
+		]
+	},
+	"custom/logout": {
+		"format": "󰗼",
+		"tooltip": true,
+		"tooltip-format": "Logout",
+		"on-click": "niri msg action quit"
+	},
+	"custom/lock": {
+		"format": "󰍁",
+		"tooltip": true,
+		"tooltip-format": "Lock",
+		"on-click": "hyprlock"
+	},
+	"custom/reboot": {
+		"format": "󰜉",
+		"tooltip": true,
+		"tooltip-format": "Reboot",
+		"on-click": "reboot"
+	},
+	"custom/shutdown": {
+		"format": "",
+		"tooltip": true,
+		"tooltip-format": "Shutdown",
+		"on-click": "shutdown now"
+	},
+	"niri/workspaces": {
+		"format": "{icon}",
+		"on-scroll-up": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py prev 2> /dev/null",
+		"on-scroll-down": "$HOME/.config/waybar/scripts/niri/scroll-workspace.py next 2> /dev/null",
+		"on-click": "activate",
+		"format-icons": {
+	  //"1": "",
+	  //"2": "",
+	  //"3": "",
+	  //"4": "",
+	  //"5": "",
 	  "urgent": "",
-      "focused": "⬤",
-      "default": "◯"
-	  }
-  },
-  "tray": {
-    "spacing": 10
-  },
-  "idle_inhibitor": {
-	"format": "{icon}",
-	"format-icons": {
-		"activated": "\uf06e",
-		"deactivated": "\uf070"
-  	},
-   },
-  "clock": {
-    "format": "   {:L%R (%a)}",
-	"format-alt": "  {:%OI:%M %p}",
-    "tooltip-format": "<big>{:%d %A}</big>\n<tt><small>{calendar}</small></tt>",
-  },
-  "cpu": {
-	"interval": 2,
-    "format": "   {usage}%"
-  },
-  "memory": {
-	"interval": 3,
-    "format": "{}% RAM"
-  },
-  "network": {
-    "format-wifi": "{essid} ({signalStrength}%)  ",
-    "format-ethernet": "{ipaddr}/{cidr} 󰩠 ",
-    "format-linked": "{ifname} (No IP) 󰛳1 ",
-    "format-disconnected": "Disconnected 󰲛 ",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "{ifname} via {gwaddr}"
-  },
-  "pulseaudio": {
-    "scroll-step": 5, // %, can be a float
-    "format": "{icon}   {volume}{source_volume}",
-	"format-muted": "{icon}  muted({volume}) ",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
-    },
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "~/.config/waybar/modules/switchsink.sh",
-	"on-click-backward": "pavucontrol"
-  },
-  "custom/media": {
-    "format": "{0}",
-    "return-type": "json",
-    "max-length": 40,
-    "escape": true,
-    "exec": "$HOME/.config/waybar/modules/mediaplayer.py 2> /dev/null",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl stop",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
-  },
-  "custom/uair": {
-	  "exec": "uair",
-	  "on-click": "uairctl toggle",
-	  "on-click-right": "uairctl next",
-	  "tooltip": false
-  },
-  "mpris": {
-	"format": "{player_icon} {artist} - {title}",
-	"format-paused": "{status_icon} {artist} - {title}",
-	"tooltip-format": "{player_icon} {title}\n\uf1fc   {artist}\n\uEFCC   {album}\n\uf02b   {player}",
-	"on-click-backward": "playerctld unshift",
-	"on-click-forward": "playerctl shift",
-	"max-length": 35,
-	"player-icons": {
-		"default": "  ",
-		"firefox": "\uf269  ",
-		"spotify": "\uf1bc  ",
-		"YoutubeMusic": "\uf16a  "
+	  "focused": "⬤",
+	  "default": "◯",
+	  "scratchpad": "◎"
+		},
+		"sort-by-number": true
 	},
-	"status-icons": {
-		"paused": "  "
+	"custom/dnd": {
+		"exec": "~/.config/waybar/modules/dunst-listener.sh",
+		"return-type": "json",
+		"format": "{}",
+		"on-click": "dunstctl set-paused toggle",
+		"menu": "on-click-right",
+		"menu-file": "~/.config/waybar/dnd-menu.xml",
+		"menu-actions": {
+			"pop": "dunstctl history-pop",
+			"history": "~/.config/waybar/scripts/dunst-history.sh",
+			"clear": "dunstctl history-clear"
+		}
 	},
+	"keyboard-state": {
+		"capslock": true,
+		"format": "{icon}",
+		"format-icons": {
+			"locked": "",
+			"unlocked": ""
+		}
+	},
+	"niri/window": {},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 14,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		]
+	},
+	"sway/workspaces": {
+		"format": "{icon}",
+		"format-icons" : {
+			"urgent": "",
+			"focused": "⬤",
+			"default": "◯"
+		}
+	},
+	"tray": {
+		"spacing": 10
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "\uf06e",
+			"deactivated": "\uf070"
+		},
+	},
+	"upower": {
+		"native-path": "ps-controller-battery-41:42:eb:0b:90:d4",
+		"format": "󰊴   {percentage}",
+		"show-icon": false,
+		"hide-if-empty": true
+	},
+	"clock": {
+		"format": "   {:L%R (%a)}",
+		"format-alt": "  {:%OI:%M %p}",
+		"tooltip-format": "<big>{:%d %A}</big>\n<tt><small>{calendar}</small></tt>",
+	},
+	"cpu": {
+		"interval": 2,
+		"format": "   {usage}%"
+	},
+	"memory": {
+		"interval": 3,
+		"format": "{}% RAM"
+	},
+	"network": {
+		"format-wifi": "{essid} ({signalStrength}%)  ",
+		"format-ethernet": "{ipaddr}/{cidr} 󰩠 ",
+		"format-linked": "{ifname} (No IP) 󰛳1 ",
+		"format-disconnected": "Disconnected 󰲛 ",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"tooltip-format": "{ifname} via {gwaddr}"
+	},
+	"pulseaudio": {
+		"scroll-step": 5, // %, can be a float
+		"format": "{icon}   {volume}{source_volume}",
+		"format-muted": "{icon}  muted({volume}) ",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""]
+		},
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "~/.config/waybar/modules/switchsink.sh",
+		"on-click-backward": "pavucontrol"
+	},
+	"custom/media": {
+		"format": "{0}",
+		"return-type": "json",
+		"max-length": 40,
+		"escape": true,
+		"exec": "$HOME/.config/waybar/modules/mediaplayer.py 2> /dev/null",
+		"on-click": "playerctl play-pause",
+		"on-click-right": "playerctl stop",
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous"
+	},
+	"custom/uair": {
+		"exec": "uair",
+		"on-click": "uairctl toggle",
+		"on-click-right": "uairctl next",
+		"tooltip": false
+	},
+	"mpris": {
+		"format": "{player_icon} {artist} - {title}",
+		"format-paused": "{status_icon} {artist} - {title}",
+		"tooltip-format": "{player_icon} {title}\n\uf1fc   {artist}\n\uefcc   {album}\n\uf02b   {player}",
+		"on-click-backward": "playerctld unshift",
+		"on-click-forward": "playerctl shift",
+		"max-length": 35,
+		"player-icons": {
+			"default": "  ",
+			"firefox": "\uf269  ",
+			"spotify": "\uf1bc  ",
+			"YoutubeMusic": "\uf16a  "
+		},
+		"status-icons": {
+			"paused": "  "
+		},
 	// "ignored-players": ["firefox"]
-}
+	}
 
 }

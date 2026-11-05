@@ -1,4 +1,5 @@
 spawn-at-startup "waybar"
+spawn-at-startup "lxqt-policykit-agent"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "playerctld"
 spawn-at-startup "waypaper" "--restore"
@@ -189,6 +190,7 @@ window-rule {
 	match app-id="xdg-desktop-portal-gtk"
 	match app-id="org.gnome.Calculator"
 	match app-id="YomiNinja"
+	match app-id="lxqt-policykit-agent"
     open-floating true
 }
 
