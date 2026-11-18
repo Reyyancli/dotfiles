@@ -157,9 +157,11 @@ window-rule {
 }
 
 window-rule {
-    match app-id="Tilda"
+    match app-id="Tilda" title="tilda"
     open-floating true
     default-floating-position x=0 y=12 relative-to="top"
+	min-width 1478
+	min-height 648
 }
 
 window-rule {
@@ -301,8 +303,16 @@ layer-rule {
 }
 
 binds {
+	// Wayscriber
+	Super+Escape { spawn "wayscriber" "--daemon-toggle"; }
+	Mod+Alt+Escape { spawn "wayscriber" "--light-toggle"; }
+
+	// Script for whisper
+	Mod+V { spawn "whisper-dictate"; }
+	Mod+Ctrl+V { spawn "whisper-dictate" "bn"; }
+
 	// Keybind for tilda (terminal)
-	Super+Shift+T { spawn "tilda" "-T"; }
+	Mod+Shift+T { spawn "tilda" "-T"; }
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
@@ -570,7 +580,6 @@ binds {
 	// ###################################
 
     Mod+Backspace { spawn "~/.config/niri/scripts/logoutmenu.sh"; }
-    Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
